@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What Motorcycle Should I Buy? | Riders Share Quiz</title>
-<meta name="description" content="Expert 20-question quiz to find your perfect motorcycle from 214 models. Personalized recommendations for all riders.">
+<meta name="description" content="Expert 21-question quiz to find your perfect motorcycle from 214 models. Personalized recommendations for all riders.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
@@ -55,24 +55,25 @@ const BIKES = [{"id": "c-n-1", "name": "Honda Rebel 300 E-Clutch", "cat": "cruis
 const QS=[
 {id:1,sec:"Riding Experience & Skill",num:"Q1",text:"How would you describe your current motorcycle experience?",note:"This is the primary safety filter for recommendations.",multi:false,opts:[{l:"A",n:"Never ridden or MSF/intro course only",v:"beginner"},{l:"B",n:"Ridden occasionally",d:"Borrowed bikes, parking lot, short rides",v:"beg-inter"},{l:"C",n:"Ride regularly",d:"Own/owned a bike; comfortable in traffic + highway",v:"intermediate"},{l:"D",n:"Experienced",d:"Multiple bikes owned; confident in all conditions",v:"inter-adv"},{l:"E",n:"Advanced / Expert",d:"Track days, touring, off-road; 10,000+ miles",v:"advanced"}]},
 {id:2,sec:"Riding Experience & Skill",num:"Q2",text:"Highest displacement ridden with confidence for 30+ minutes?",note:"Cross-referenced with Q1 to validate experience.",multi:false,opts:[{l:"A",n:"None / under 250cc",v:"under250"},{l:"B",n:"250-400cc",v:"250-400"},{l:"C",n:"401-650cc",v:"401-650"},{l:"D",n:"651-900cc",v:"651-900"},{l:"E",n:"901cc+",v:"901+"}]},
-{id:3,sec:"Riding Experience & Skill",num:"Q3",text:"Formal motorcycle training or licensing?",multi:false,opts:[{l:"A",n:"No training or license yet",v:"none"},{l:"B",n:"MSF Basic RiderCourse",d:"Class M obtained",v:"basic"},{l:"C",n:"MSF Basic + additional courses",d:"Advanced, track instruction",v:"advanced-training"},{l:"D",n:"Extensive",d:"Cornering schools, off-road, racing license",v:"extensive"}]},
-{id:4,sec:"Riding Environment & Use Case",num:"Q4",text:"PRIMARY use for this motorcycle?",note:"Select the single most important use case.",multi:false,opts:[{l:"A",n:"Daily commuting",d:"City/suburban, under 30 mi round-trip",v:"commute"},{l:"B",n:"Weekend recreation",d:"Twisties, day trips, canyon carving",v:"recreation"},{l:"C",n:"Long-distance touring",d:"Multi-day, 200+ mi/day, two-up",v:"touring"},{l:"D",n:"Mixed-surface adventure",d:"Paved + gravel/dirt/fire roads",v:"adventure"},{l:"E",n:"Track days or spirited sport riding",v:"track"},{l:"F",n:"Casual cruising and short social rides",v:"casual"}]},
-{id:5,sec:"Riding Environment & Use Case",num:"Q5",text:"Paved vs. unpaved riding split?",multi:false,opts:[{l:"A",n:"100% paved",v:"paved"},{l:"B",n:"90/10 paved/dirt",v:"90-10"},{l:"C",n:"70/30 paved/dirt",v:"70-30"},{l:"D",n:"50/50 mixed",v:"50-50"},{l:"E",n:"Primarily off-road",v:"offroad"}]},
-{id:6,sec:"Riding Environment & Use Case",num:"Q6",text:"Longest single-day ride you expect regularly?",multi:false,opts:[{l:"A",n:"Under 50 miles",v:"under50"},{l:"B",n:"50-100 miles",v:"50-100"},{l:"C",n:"100-250 miles",v:"100-250"},{l:"D",n:"250-500 miles",v:"250-500"},{l:"E",n:"500+ miles",d:"Iron Butt territory",v:"500+"}]},
-{id:7,sec:"Riding Environment & Use Case",num:"Q7",text:"Will you regularly carry a passenger?",multi:false,opts:[{l:"A",n:"Never or almost never",v:"never"},{l:"B",n:"Occasionally",d:"Few times per season",v:"occasionally"},{l:"C",n:"Frequently",d:"Most weekends",v:"frequently"},{l:"D",n:"Primary requirement",d:"Partner rides with me",v:"primary"}]},
-{id:8,sec:"Physical Fit & Ergonomics",num:"Q8",text:"Your height?",multi:false,opts:[{l:"A",n:"Under 5'4\"",v:"under54"},{l:"B",n:"5'4\" - 5'7\"",v:"54-57"},{l:"C",n:"5'8\" - 5'11\"",v:"58-511"},{l:"D",n:"6'0\" - 6'3\"",v:"60-63"},{l:"E",n:"6'4\"+",v:"64+"}]},
-{id:9,sec:"Physical Fit & Ergonomics",num:"Q9",text:"Approximate inseam?",note:"Filters seat height compatibility.",multi:false,opts:[{l:"A",n:"Under 28\"",v:"under28"},{l:"B",n:"28-30\"",v:"28-30"},{l:"C",n:"31-33\"",v:"31-33"},{l:"D",n:"34-36\"",v:"34-36"},{l:"E",n:"37\"+",v:"37+"}]},
-{id:10,sec:"Physical Fit & Ergonomics",num:"Q10",text:"Most comfortable riding position?",multi:false,opts:[{l:"A",n:"Feet forward, reclined",d:"Cruiser",v:"cruiser"},{l:"B",n:"Upright, neutral",d:"Standard / Naked",v:"standard"},{l:"C",n:"Slightly forward lean",d:"Sport / clip-ons",v:"sport"},{l:"D",n:"Upright, tall commanding view",d:"ADV / Touring",v:"adv-touring"},{l:"E",n:"No preference / not sure",v:"any"}]},
-{id:11,sec:"Budget & Ownership",num:"Q11",text:"Total budget for motorcycle purchase (not including gear)?",multi:false,opts:[{l:"A",n:"Under $5,000",v:"under5k"},{l:"B",n:"$5,000 - $8,000",v:"5-8k"},{l:"C",n:"$8,000 - $12,000",v:"8-12k"},{l:"D",n:"$12,000 - $18,000",v:"12-18k"},{l:"E",n:"$18,000 - $25,000",v:"18-25k"},{l:"F",n:"$25,000+",v:"25k+"}]},
-{id:12,sec:"Budget & Ownership",num:"Q12",text:"Open to buying used?",multi:false,opts:[{l:"A",n:"Yes, absolutely",d:"Best value",v:"yes"},{l:"B",n:"Open if right condition",v:"open"},{l:"C",n:"Prefer new but would consider",v:"prefer-new"},{l:"D",n:"No, I want new with warranty",v:"new-only"}]},
-{id:13,sec:"Budget & Ownership",num:"Q13",text:"Ongoing maintenance costs and complexity?",multi:false,opts:[{l:"A",n:"Lowest possible",d:"Shaft drive, Honda/Yamaha",v:"lowest"},{l:"B",n:"Comfortable with moderate",d:"Chain/belt, standard intervals",v:"moderate"},{l:"C",n:"Mechanically inclined",d:"Enjoy working on my bike",v:"diy"},{l:"D",n:"Dealer handles everything",v:"dealer"}]},
-{id:14,sec:"Style & Priorities",num:"Q14",text:"What do you want most from your motorcycle?",note:"Select up to two.",multi:true,maxSel:2,opts:[{l:"A",n:"Maximum comfort for long rides",v:"comfort"},{l:"B",n:"Lightweight agility, sharp handling",v:"agility"},{l:"C",n:"Raw power and acceleration",v:"power"},{l:"D",n:"Visual style and brand identity",v:"style"},{l:"E",n:"Versatility",d:"One bike does everything",v:"versatile"},{l:"F",n:"Simplicity and reliability",v:"reliable"}]},
-{id:15,sec:"Style & Priorities",num:"Q15",text:"How important are electronic rider aids?",multi:false,opts:[{l:"A",n:"Essential",d:"Cornering ABS, TC, ride modes, e-suspension",v:"essential"},{l:"B",n:"Important",d:"ABS + TC must-have; modes appreciated",v:"important"},{l:"C",n:"Moderate",d:"ABS important; advanced unnecessary",v:"moderate"},{l:"D",n:"Not important",d:"Prefer simple, analog",v:"minimal"}]},
-{id:16,sec:"Style & Priorities",num:"Q16",text:"Engine character that appeals most?",multi:false,opts:[{l:"A",n:"Low-end torque, deep exhaust",d:"V-twin / big single",v:"torque"},{l:"B",n:"Smooth, linear, predictable",d:"Parallel-twin / small cc",v:"smooth"},{l:"C",n:"High-revving excitement",d:"Inline-four",v:"revvy"},{l:"D",n:"Best of both worlds",d:"Triple / crossplane twin",v:"triple"},{l:"E",n:"Not sure yet",v:"unsure"}]},
-{id:17,sec:"Style & Priorities",num:"Q17",text:"Brand preference or loyalty?",multi:false,opts:[{l:"A",n:"Harley-Davidson / Indian",d:"American V-twin heritage",v:"american"},{l:"B",n:"Japanese Big Four",d:"Honda, Yamaha, Kawasaki, Suzuki",v:"japanese"},{l:"C",n:"European premium",d:"BMW, Ducati, Triumph, KTM, Aprilia",v:"european"},{l:"D",n:"Royal Enfield or accessible brands",v:"accessible"},{l:"E",n:"No preference",v:"any"}]},
-{id:18,sec:"Advanced Factors",num:"Q18",text:"Weight comfortable managing at low speeds?",multi:false,opts:[{l:"A",n:"Under 400 lbs",v:"under400"},{l:"B",n:"400-500 lbs",v:"400-500"},{l:"C",n:"500-600 lbs",v:"500-600"},{l:"D",n:"600+ lbs",v:"600+"},{l:"E",n:"Not sure",v:"unsure"}]},
-{id:19,sec:"Advanced Factors",num:"Q19",text:"Aftermarket and customization importance?",multi:false,opts:[{l:"A",n:"Very important",d:"Exhaust, suspension, aesthetics",v:"very"},{l:"B",n:"Somewhat",d:"Luggage, windscreen, comfort",v:"somewhat"},{l:"C",n:"Not important",d:"Great out of the box",v:"none"}]},
-{id:20,sec:"Advanced Factors",num:"Q20",text:"Climate where you ride most?",multi:false,opts:[{l:"A",n:"Four-season, cold winters",d:"40-60F riding",v:"four-season"},{l:"B",n:"Year-round warm",d:"Rarely below 50F",v:"warm"},{l:"C",n:"Extreme heat",d:"100F+ summers",v:"hot"},{l:"D",n:"Frequent rain / wet",v:"wet"}]}
+{id:3,sec:"Riding Experience & Skill",num:"Q3",text:"What are you looking for in your next bike?",note:"Helps us target the right displacement range for you.",multi:false,opts:[{l:"A",n:"My first motorcycle",d:"No current bike to compare to",v:"first"},{l:"B",n:"Something similar to what I ride now",d:"Happy with my current displacement range",v:"similar"},{l:"C",n:"Ready to step up in power",d:"Want more displacement than my current bike",v:"stepup"},{l:"D",n:"Significant upgrade",d:"Ready for a major jump in performance",v:"bigupgrade"}]},
+{id:4,sec:"Riding Experience & Skill",num:"Q4",text:"Formal motorcycle training or licensing?",multi:false,opts:[{l:"A",n:"No training or license yet",v:"none"},{l:"B",n:"MSF Basic RiderCourse",d:"Class M obtained",v:"basic"},{l:"C",n:"MSF Basic + additional courses",d:"Advanced, track instruction",v:"advanced-training"},{l:"D",n:"Extensive",d:"Cornering schools, off-road, racing license",v:"extensive"}]},
+{id:5,sec:"Riding Environment & Use Case",num:"Q5",text:"PRIMARY use for this motorcycle?",note:"Select the single most important use case.",multi:false,opts:[{l:"A",n:"Daily commuting",d:"City/suburban, under 30 mi round-trip",v:"commute"},{l:"B",n:"Weekend recreation",d:"Twisties, day trips, canyon carving",v:"recreation"},{l:"C",n:"Long-distance touring",d:"Multi-day, 200+ mi/day, two-up",v:"touring"},{l:"D",n:"Mixed-surface adventure",d:"Paved + gravel/dirt/fire roads",v:"adventure"},{l:"E",n:"Track days or spirited sport riding",v:"track"},{l:"F",n:"Casual cruising and short social rides",v:"casual"}]},
+{id:6,sec:"Riding Environment & Use Case",num:"Q6",text:"Paved vs. unpaved riding split?",multi:false,opts:[{l:"A",n:"100% paved",v:"paved"},{l:"B",n:"90/10 paved/dirt",v:"90-10"},{l:"C",n:"70/30 paved/dirt",v:"70-30"},{l:"D",n:"50/50 mixed",v:"50-50"},{l:"E",n:"Primarily off-road",v:"offroad"}]},
+{id:7,sec:"Riding Environment & Use Case",num:"Q7",text:"Longest single-day ride you expect regularly?",multi:false,opts:[{l:"A",n:"Under 50 miles",v:"under50"},{l:"B",n:"50-100 miles",v:"50-100"},{l:"C",n:"100-250 miles",v:"100-250"},{l:"D",n:"250-500 miles",v:"250-500"},{l:"E",n:"500+ miles",d:"Iron Butt territory",v:"500+"}]},
+{id:8,sec:"Riding Environment & Use Case",num:"Q8",text:"Will you regularly carry a passenger?",multi:false,opts:[{l:"A",n:"Never or almost never",v:"never"},{l:"B",n:"Occasionally",d:"Few times per season",v:"occasionally"},{l:"C",n:"Frequently",d:"Most weekends",v:"frequently"},{l:"D",n:"Primary requirement",d:"Partner rides with me",v:"primary"}]},
+{id:9,sec:"Physical Fit & Ergonomics",num:"Q9",text:"Your height?",multi:false,opts:[{l:"A",n:"Under 5'4\"",v:"under54"},{l:"B",n:"5'4\" - 5'7\"",v:"54-57"},{l:"C",n:"5'8\" - 5'11\"",v:"58-511"},{l:"D",n:"6'0\" - 6'3\"",v:"60-63"},{l:"E",n:"6'4\"+",v:"64+"}]},
+{id:10,sec:"Physical Fit & Ergonomics",num:"Q10",text:"Approximate inseam?",note:"Filters seat height compatibility.",multi:false,opts:[{l:"A",n:"Under 28\"",v:"under28"},{l:"B",n:"28-30\"",v:"28-30"},{l:"C",n:"31-33\"",v:"31-33"},{l:"D",n:"34-36\"",v:"34-36"},{l:"E",n:"37\"+",v:"37+"}]},
+{id:11,sec:"Physical Fit & Ergonomics",num:"Q11",text:"Most comfortable riding position?",multi:false,opts:[{l:"A",n:"Feet forward, reclined",d:"Cruiser",v:"cruiser"},{l:"B",n:"Upright, neutral",d:"Standard / Naked",v:"standard"},{l:"C",n:"Slightly forward lean",d:"Sport / clip-ons",v:"sport"},{l:"D",n:"Upright, tall commanding view",d:"ADV / Touring",v:"adv-touring"},{l:"E",n:"No preference / not sure",v:"any"}]},
+{id:12,sec:"Budget & Ownership",num:"Q12",text:"Total budget for motorcycle purchase (not including gear)?",multi:false,opts:[{l:"A",n:"Under $5,000",v:"under5k"},{l:"B",n:"$5,000 - $8,000",v:"5-8k"},{l:"C",n:"$8,000 - $12,000",v:"8-12k"},{l:"D",n:"$12,000 - $18,000",v:"12-18k"},{l:"E",n:"$18,000 - $25,000",v:"18-25k"},{l:"F",n:"$25,000+",v:"25k+"}]},
+{id:13,sec:"Budget & Ownership",num:"Q13",text:"Open to buying used?",multi:false,opts:[{l:"A",n:"Yes, absolutely",d:"Best value",v:"yes"},{l:"B",n:"Open if right condition",v:"open"},{l:"C",n:"Prefer new but would consider",v:"prefer-new"},{l:"D",n:"No, I want new with warranty",v:"new-only"}]},
+{id:14,sec:"Budget & Ownership",num:"Q14",text:"Ongoing maintenance costs and complexity?",multi:false,opts:[{l:"A",n:"Lowest possible",d:"Shaft drive, Honda/Yamaha",v:"lowest"},{l:"B",n:"Comfortable with moderate",d:"Chain/belt, standard intervals",v:"moderate"},{l:"C",n:"Mechanically inclined",d:"Enjoy working on my bike",v:"diy"},{l:"D",n:"Dealer handles everything",v:"dealer"}]},
+{id:15,sec:"Style & Priorities",num:"Q15",text:"What do you want most from your motorcycle?",note:"Select up to two.",multi:true,maxSel:2,opts:[{l:"A",n:"Maximum comfort for long rides",v:"comfort"},{l:"B",n:"Lightweight agility, sharp handling",v:"agility"},{l:"C",n:"Raw power and acceleration",v:"power"},{l:"D",n:"Visual style and brand identity",v:"style"},{l:"E",n:"Versatility",d:"One bike does everything",v:"versatile"},{l:"F",n:"Simplicity and reliability",v:"reliable"}]},
+{id:16,sec:"Style & Priorities",num:"Q16",text:"How important are electronic rider aids?",multi:false,opts:[{l:"A",n:"Essential",d:"Cornering ABS, TC, ride modes, e-suspension",v:"essential"},{l:"B",n:"Important",d:"ABS + TC must-have; modes appreciated",v:"important"},{l:"C",n:"Moderate",d:"ABS important; advanced unnecessary",v:"moderate"},{l:"D",n:"Not important",d:"Prefer simple, analog",v:"minimal"}]},
+{id:17,sec:"Style & Priorities",num:"Q17",text:"Engine character that appeals most?",multi:false,opts:[{l:"A",n:"Low-end torque, deep exhaust",d:"V-twin / big single",v:"torque"},{l:"B",n:"Smooth, linear, predictable",d:"Parallel-twin / small cc",v:"smooth"},{l:"C",n:"High-revving excitement",d:"Inline-four",v:"revvy"},{l:"D",n:"Best of both worlds",d:"Triple / crossplane twin",v:"triple"},{l:"E",n:"Not sure yet",v:"unsure"}]},
+{id:18,sec:"Style & Priorities",num:"Q18",text:"Brand preference or loyalty?",multi:false,opts:[{l:"A",n:"Harley-Davidson / Indian",d:"American V-twin heritage",v:"american"},{l:"B",n:"Japanese Big Four",d:"Honda, Yamaha, Kawasaki, Suzuki",v:"japanese"},{l:"C",n:"European premium",d:"BMW, Ducati, Triumph, KTM, Aprilia",v:"european"},{l:"D",n:"Royal Enfield or accessible brands",v:"accessible"},{l:"E",n:"No preference",v:"any"}]},
+{id:19,sec:"Advanced Factors",num:"Q19",text:"Weight comfortable managing at low speeds?",multi:false,opts:[{l:"A",n:"Under 400 lbs",v:"under400"},{l:"B",n:"400-500 lbs",v:"400-500"},{l:"C",n:"500-600 lbs",v:"500-600"},{l:"D",n:"600+ lbs",v:"600+"},{l:"E",n:"Not sure",v:"unsure"}]},
+{id:20,sec:"Advanced Factors",num:"Q20",text:"Aftermarket and customization importance?",multi:false,opts:[{l:"A",n:"Very important",d:"Exhaust, suspension, aesthetics",v:"very"},{l:"B",n:"Somewhat",d:"Luggage, windscreen, comfort",v:"somewhat"},{l:"C",n:"Not important",d:"Great out of the box",v:"none"}]},
+{id:21,sec:"Advanced Factors",num:"Q21",text:"Climate where you ride most?",multi:false,opts:[{l:"A",n:"Four-season, cold winters",d:"40-60F riding",v:"four-season"},{l:"B",n:"Year-round warm",d:"Rarely below 50F",v:"warm"},{l:"C",n:"Extreme heat",d:"100F+ summers",v:"hot"},{l:"D",n:"Frequent rain / wet",v:"wet"}]}
 ];
 
 let S={step:'landing',qi:0,ans:{}};
@@ -84,22 +85,22 @@ function getExp(a){
   const dm={under250:0,'250-400':1,'401-650':2,'651-900':3,'901+':4};
   const d=dm[a[2]]||0;
   if(d<t-1)t=Math.max(d+1,0);
-  if(a[3]==='none'&&t>1)t=1;
-  if(a[3]==='extensive'&&t<3)t=Math.min(t+1,4);
+  if(a[4]==='none'&&t>1)t=1;
+  if(a[4]==='extensive'&&t<3)t=Math.min(t+1,4);
   return EL[Math.min(t,4)];
 }
 
 function getCat(a){
   const sc={cruiser:0,standard:0,sport:0,adventure:0,touring:0};
   const m4={commute:{standard:3},recreation:{sport:2,standard:2},touring:{touring:3},adventure:{adventure:3},track:{sport:3},casual:{cruiser:3}};
-  Object.entries(m4[a[4]]||{}).forEach(([k,v])=>sc[k]+=v);
-  if(['70-30','50-50','offroad'].includes(a[5]))sc.adventure+=3;
-  else if(a[5]==='90-10')sc.adventure+=1;
-  if(['250-500','500+'].includes(a[6])){sc.touring+=3;sc.cruiser+=1;}
-  if(['frequently','primary'].includes(a[7])){sc.touring+=2;sc.cruiser+=1;}
+  Object.entries(m4[a[5]]||{}).forEach(([k,v])=>sc[k]+=v);
+  if(['70-30','50-50','offroad'].includes(a[6]))sc.adventure+=3;
+  else if(a[6]==='90-10')sc.adventure+=1;
+  if(['250-500','500+'].includes(a[7])){sc.touring+=3;sc.cruiser+=1;}
+  if(['frequently','primary'].includes(a[8])){sc.touring+=2;sc.cruiser+=1;}
   const pm={cruiser:{cruiser:3},standard:{standard:3},sport:{sport:3},'adv-touring':{adventure:2,touring:2}};
-  Object.entries(pm[a[10]]||{}).forEach(([k,v])=>sc[k]+=v);
-  const p14=Array.isArray(a[14])?a[14]:[a[14]].filter(Boolean);
+  Object.entries(pm[a[12]]||{}).forEach(([k,v])=>sc[k]+=v);
+  const p14=Array.isArray(a[15])?a[15]:[a[15]].filter(Boolean);
   p14.forEach(p=>{
     if(p==='comfort'){sc.touring+=2;sc.cruiser+=1;}
     if(p==='agility'){sc.sport+=2;sc.standard+=1;}
@@ -115,7 +116,7 @@ function getCat(a){
 
 function budgetRange(a){
   const m={under5k:[0,5000],'5-8k':[5000,8000],'8-12k':[8000,12000],'12-18k':[12000,18000],'18-25k':[18000,25000],'25k+':[25000,99999]};
-  return m[a[11]]||[0,99999];
+  return m[a[12]]||[0,99999];
 }
 
 function parsePrice(s){
@@ -133,21 +134,21 @@ function parseMSRP(s){
 
 function shouldUsed(a){
   // Never show used path if user explicitly wants new
-  if(a[12]==='new-only'||a[12]==='prefer-new')return false;
+  if(a[13]==='new-only'||a[13]==='prefer-new')return false;
   // User explicitly wants used
-  if(a[12]==='yes')return true;
+  if(a[13]==='yes')return true;
   const exp=getExp(a);
   // Budget-driven triggers
-  if(a[11]==='under5k')return true;
-  if(a[11]==='5-8k'&&(exp==='beginner'||exp==='beg-inter'))return true;
+  if(a[12]==='under5k')return true;
+  if(a[12]==='5-8k'&&(exp==='beginner'||exp==='beg-inter'))return true;
   // Reliability priority only triggers used path at lower budgets
-  const p14=Array.isArray(a[14])?a[14]:[a[14]].filter(Boolean);
-  if(p14.includes('reliable')&&(a[11]==='under5k'||a[11]==='5-8k'||a[11]==='8-12k'))return true;
+  const p14=Array.isArray(a[15])?a[15]:[a[15]].filter(Boolean);
+  if(p14.includes('reliable')&&(a[12]==='under5k'||a[12]==='5-8k'||a[12]==='8-12k'))return true;
   return false;
 }
 
 function matchBrand(bike,a){
-  const pref=a[17];
+  const pref=a[18];
   if(pref==='any')return true;
   const bm={american:['harley','indian','victory','buell'],japanese:['honda','yamaha','kawasaki','suzuki'],european:['bmw','ducati','triumph','ktm','aprilia','other'],accessible:['royalenfield']};
   const brands=bm[pref]||[];
@@ -155,27 +156,73 @@ function matchBrand(bike,a){
 }
 
 function matchEngine(bike,a){
-  const pref=a[16];
+  const pref=a[17];
   if(pref==='unsure')return true;
   const em={torque:['vtwin','single'],smooth:['parallel-twin','single'],revvy:['inline4'],triple:['triple','parallel-twin']};
   return(em[pref]||[]).includes(bike.engineType);
 }
 
-function expOk(bike,userExp){
+function parseCCFromEngine(eng){
+  if(!eng)return 0;
+  const m=eng.match(/(\d[\d,]*)/);
+  return m?parseInt(m[1].replace(/,/g,'')):0;
+}
+
+function ccTier(cc){
+  if(cc<=300)return 0;
+  if(cc<=500)return 1;
+  if(cc<=700)return 2;
+  if(cc<=900)return 3;
+  return 4;
+}
+
+function userCCTier(a){
+  const dm={under250:0,'250-400':1,'401-650':2,'651-900':3,'901+':4};
+  let tier=dm[a[2]]||0;
+  // Q3 upgrade intent shifts the target CC tier
+  if(a[3]==='stepup')tier=Math.min(tier+1,4);
+  else if(a[3]==='bigupgrade')tier=Math.min(tier+2,4);
+  // 'first' and 'similar' keep tier as-is
+  return tier;
+}
+
+function expOk(bike,userExp,a){
   const bi=EL.indexOf(bike.expLevel);
   const ui=EL.indexOf(userExp);
-  return bi<=ui+1;
+  // Base experience gate: bike can be at most 1 level above user
+  if(bi>ui+1)return false;
+  // CC experience hard gate: prevent huge displacement jumps
+  // Use raw CC tier (without upgrade shift) for safety gates
+  const rawDm={under250:0,'250-400':1,'401-650':2,'651-900':3,'901+':4};
+  const rawCCTier=rawDm[a[2]]||0;
+  const bcc=parseCCFromEngine(bike.engine);
+  const upgrade=a[3];
+  // Safety gates based on raw experience + upgrade intent
+  if(rawCCTier===0){
+    // Never ridden / under 250cc
+    if(upgrade==='stepup'&&bcc>900)return false;
+    else if(upgrade==='bigupgrade'&&bcc>900)return false;
+    else if(!upgrade||upgrade==='first'||upgrade==='similar'){if(bcc>650)return false;}
+  }else if(rawCCTier===1){
+    // 250-400cc experience
+    if(upgrade==='stepup'&&bcc>1100)return false;
+    else if(upgrade==='bigupgrade'&&bcc>1300)return false;
+    else if(!upgrade||upgrade==='similar'){if(bcc>900)return false;}
+  }
+  // 401cc+ experience: no hard CC ceiling (experience gate handles it)
+  return true;
 }
 
 function scoreBike(bike,a){
   let s=0;
   const userExp=getExp(a);
   const cat=getCat(a);
-  if(!expOk(bike,userExp))return-999;
+  if(!expOk(bike,userExp,a))return-999;
   if(bike.cat===cat)s+=10;
-  // Crossover logic (Fix #6)
+  // Crossover logic
   if(bike.crossover===cat)s+=7;
-  // Budget
+
+  // Budget (Q11)
   const[blo,bhi]=budgetRange(a);
   if(bike.isNew){
     const p=parseMSRP(bike.msrp);
@@ -188,19 +235,147 @@ function scoreBike(bike,a){
     else if(plo<=bhi)s+=2;
     else s-=3;
   }
-  // New-only filter
-  if(a[12]==='new-only'&&!bike.isNew)s-=20;
-  // Brand
+
+  // New-only filter (Q12)
+  if(a[13]==='new-only'&&!bike.isNew)s-=20;
+
+  // Brand preference (Q17)
   if(matchBrand(bike,a))s+=3;
-  else if(a[17]!=='any')s-=1;
-  // Engine
+  else if(a[18]!=='any')s-=1;
+
+  // Engine character (Q16)
   if(matchEngine(bike,a))s+=2;
-  // Maintenance
-  if(a[13]==='lowest'&&['honda','yamaha','suzuki','kawasaki'].includes(bike.brand))s+=1;
-  if(a[13]==='diy'&&['harley','ducati','ktm','buell','victory'].includes(bike.brand))s+=1;
-  // Experience level match bonus
+
+  // Maintenance preference (Q13)
+  if(a[14]==='lowest'&&['honda','yamaha','suzuki','kawasaki'].includes(bike.brand))s+=1;
+  if(a[14]==='diy'&&['harley','ducati','ktm','buell','victory'].includes(bike.brand))s+=1;
+  if(a[14]==='dealer'&&['bmw','ducati','ktm','aprilia'].includes(bike.brand))s+=1;
+
+  // Experience level match bonus (Q1/Q2/Q3 combined via getExp)
   if(bike.expLevel===userExp)s+=3;
   else if(EL.indexOf(bike.expLevel)===EL.indexOf(userExp)-1)s+=1;
+
+  // CC experience proximity bonus (Q2) - reward bikes closer to user's CC comfort zone
+  const uct=userCCTier(a);
+  const bcc=parseCCFromEngine(bike.engine);
+  const bct=ccTier(bcc);
+  const ccDiff=Math.abs(bct-uct);
+  if(ccDiff===0)s+=3;
+  else if(ccDiff===1)s+=1;
+  else if(ccDiff>=3)s-=2;
+
+  // Seat height vs inseam (Q9) - new bikes only (we have seat data)
+  if(bike.isNew&&bike.seat){
+    const seatH=parseFloat(bike.seat);
+    if(!isNaN(seatH)){
+      const inseamMap={under28:27,'28-30':29,'31-33':32,'34-36':35,'37+':38};
+      const inseam=inseamMap[a[10]]||32;
+      if(inseam<29&&seatH>31.5)s-=2;
+      else if(inseam<29&&seatH<=28)s+=2;
+      else if(inseam>=35&&seatH<30)s-=1;
+      else if(inseam>=35&&seatH>=33)s+=1;
+      if(seatH<=inseam+1)s+=1;
+    }
+  }
+
+  // Height preference (Q8) - penalize heavy/tall ADV for short riders, small bikes for tall
+  const htMap={under54:0,'54-57':1,'58-511':2,'60-63':3,'64+':4};
+  const ht=htMap[a[9]]||2;
+  if(ht<=1){
+    // Short riders: bonus for low seat cruisers, penalty for tall ADV
+    if(bike.cat==='adventure'&&bike.isNew&&bike.seat){
+      const sh=parseFloat(bike.seat);
+      if(sh>33.5)s-=2;
+    }
+    if(bike.cat==='cruiser')s+=1;
+  }
+  if(ht>=4){
+    // Tall riders: penalty for very low/small bikes
+    if(bike.cat==='cruiser'&&bike.isNew&&bike.seat){
+      const sh=parseFloat(bike.seat);
+      if(sh<27)s-=1;
+    }
+    if(bike.cat==='adventure'||bike.cat==='touring')s+=1;
+  }
+
+  // Weight comfort (Q18)
+  if(bike.isNew&&bike.weight){
+    const wt=parseInt(bike.weight.replace(/[^0-9]/g,''));
+    if(!isNaN(wt)){
+      const wtPref=a[19];
+      if(wtPref==='under400'){
+        if(wt<=400)s+=2;
+        else if(wt>500)s-=2;
+        else if(wt>450)s-=1;
+      }else if(wtPref==='400-500'){
+        if(wt>=350&&wt<=520)s+=1;
+        else if(wt>600)s-=2;
+      }else if(wtPref==='500-600'){
+        if(wt>=450&&wt<=620)s+=1;
+        else if(wt<350)s-=1;
+      }else if(wtPref==='600+'){
+        if(wt>=550)s+=1;
+        else if(wt<400)s-=1;
+      }
+      // 'unsure' gets no weight modifier
+    }
+  }
+
+  // Electronics preference (Q15)
+  const elecPref=a[16];
+  const premiumBrands=['bmw','ducati','ktm','aprilia'];
+  const basicBrands=['royalenfield','suzuki'];
+  if(elecPref==='essential'){
+    if(premiumBrands.includes(bike.brand))s+=2;
+    if(bike.expLevel==='advanced'||bike.expLevel==='inter-adv')s+=1;
+    if(bike.bestFor&&/radar|semi-active|IMU|APRC|cornering|e-clutch|DCT/i.test(bike.bestFor))s+=1;
+  }else if(elecPref==='minimal'){
+    if(basicBrands.includes(bike.brand)||bike.brand==='honda'||bike.brand==='yamaha')s+=1;
+    if(premiumBrands.includes(bike.brand)&&bike.expLevel==='advanced')s-=1;
+    if(bike.bestFor&&/simple|analog|classic|retro|basic/i.test(bike.bestFor))s+=1;
+  }
+
+  // Aftermarket importance (Q19)
+  if(a[20]==='very'){
+    if(['harley','honda','yamaha','kawasaki'].includes(bike.brand))s+=1;
+    if(bike.whyBuy&&/aftermarket|customize|community/i.test(bike.whyBuy))s+=1;
+    if(bike.bestFor&&/aftermarket/i.test(bike.bestFor))s+=1;
+  }
+
+  // Climate (Q20)
+  if(a[21]==='wet'){
+    // Favor ABS, fuel injection, shaft/belt drive in wet
+    if(bike.bestFor&&/ABS|traction/i.test(bike.bestFor))s+=1;
+    if(bike.whyBuy&&/shaft drive|belt drive/i.test(bike.whyBuy))s+=1;
+  }else if(a[21]==='hot'){
+    // Favor liquid-cooled in extreme heat
+    if(bike.bestFor&&/liquid.cool/i.test(bike.bestFor))s+=1;
+    if(bike.whyBuy&&/liquid.cool/i.test(bike.whyBuy))s+=1;
+  }
+
+  // Paved vs unpaved (Q5) - bonus/penalty beyond category assignment
+  if(['50-50','offroad'].includes(a[5])){
+    if(bike.cat!=='adventure')s-=2;
+    if(bike.bestFor&&/off.road|trail|spoked|21/i.test(bike.bestFor))s+=2;
+  }
+  if(a[5]==='paved'&&bike.cat==='adventure'){
+    // If 100% paved but ended up in adventure category, favor road-biased
+    if(bike.bestFor&&/road.bias|sport.tour/i.test(bike.bestFor))s+=1;
+  }
+
+  // Ride distance (Q6) - long distance rewards touring features
+  if(['250-500','500+'].includes(a[6])){
+    if(bike.bestFor&&/touring|comfort|cruise|luggage|shaft|DCT/i.test(bike.bestFor))s+=1;
+    if(bike.whyBuy&&/touring|shaft drive|cruise/i.test(bike.whyBuy))s+=1;
+  }
+
+  // Passenger (Q7) - frequent/primary passenger penalizes small bikes
+  if(['frequently','primary'].includes(a[7])){
+    const bcc2=parseCCFromEngine(bike.engine);
+    if(bcc2<500)s-=2;
+    else if(bcc2>=650)s+=1;
+  }
+
   return s;
 }
 
@@ -212,7 +387,7 @@ function getResults(a){
 
   const newInCat=scored.filter(b=>b.isNew&&b.cat===cat);
   const usedInCat=scored.filter(b=>!b.isNew&&(b.cat===cat||b.crossover===cat));
-  const pref=a[12]; // yes, open, prefer-new, new-only
+  const pref=a[13]; // yes, open, prefer-new, new-only
 
   let primary,secondary,usedAlt;
 
@@ -246,7 +421,7 @@ function getResults(a){
   if(primary)results.push({...primary,badge:'primary'});
   if(secondary&&secondary!==primary)results.push({...secondary,badge:'secondary'});
   if(usedAlt&&usedAlt!==primary&&usedAlt!==secondary)results.push({...usedAlt,badge:'used'});
-  return{results,cat,exp:getExp(a),usedPath,budget:a[11]};
+  return{results,cat,exp:getExp(a),usedPath,budget:a[12]};
 }
 
 // ============================================================
@@ -266,13 +441,13 @@ function renderLanding(){
   <div class="hdr">
     <div class="lr"><img src="https://images.prismic.io/riders-sharecom/aRyKgGGnmrmGp_Hh_logo_black_background_v2.png?auto=format,compress" alt="Riders Share""><span>Quiz</span></div>
     <h1>What Motorcycle <b>Should I Buy?</b></h1>
-    <p class="sub">20 expert questions. 214 motorcycles. Your perfect match.</p>
+    <p class="sub">21 expert questions. 214 motorcycles. Your perfect match.</p>
   </div>
   <div class="land">
     <div class="sr">
       <div class="si"><span class="sn">214</span><span class="sl">Motorcycles</span></div>
       <div class="si"><span class="sn">5</span><span class="sl">Categories</span></div>
-      <div class="si"><span class="sn">20</span><span class="sl">Questions</span></div>
+      <div class="si"><span class="sn">21</span><span class="sl">Questions</span></div>
       <div class="si"><span class="sn">145</span><span class="sl">Used Picks</span></div>
     </div>
     <div class="feats">
@@ -292,8 +467,8 @@ function renderQ(){
   const q=QS[S.qi];
   const cur=S.ans[q.id];
   const curArr=Array.isArray(cur)?cur:cur?[cur]:[];
-  const pct=((S.qi)/20*100).toFixed(0);
-  let h=`<div class="pw"><div class="pi"><span class="ps">${q.sec}</span><span class="pc">${S.qi+1} of 20</span></div><div class="pb"><div class="pf" style="width:${pct}%"></div></div></div>`;
+  const pct=((S.qi)/21*100).toFixed(0);
+  let h=`<div class="pw"><div class="pi"><span class="ps">${q.sec}</span><span class="pc">${S.qi+1} of 21</span></div><div class="pb"><div class="pf" style="width:${pct}%"></div></div></div>`;
   h+=`<div class="qcard"><div class="qn">${q.num}</div><div class="qt">${q.text}</div>`;
   if(q.note)h+=`<div class="qnote">${q.note}</div>`;
   else h+=`<div style="margin-bottom:16px"></div>`;
@@ -306,7 +481,7 @@ function renderQ(){
   h+=`</div><div class="nb">`;
   if(S.qi>0)h+=`<button class="btn bb" onclick="prev()">${SVG.back} Back</button>`;
   const hasAns=curArr.length>0;
-  if(S.qi<19)h+=`<button class="btn bn" onclick="next()" ${hasAns?'':'disabled'}>${SVG.arrow} Next</button>`;
+  if(S.qi<20)h+=`<button class="btn bn" onclick="next()" ${hasAns?'':'disabled'}>${SVG.arrow} Next</button>`;
   else h+=`<button class="btn bn" onclick="finish()" ${hasAns?'':'disabled'}>${SVG.star} See My Results</button>`;
   h+=`</div></div>`;
   app.innerHTML=h;
@@ -324,7 +499,7 @@ function pick(qid,val,multi){
   renderQ();
 }
 
-function next(){if(S.qi<19){S.qi++;renderQ();}}
+function next(){if(S.qi<20){S.qi++;renderQ();}}
 function prev(){if(S.qi>0){S.qi--;renderQ();}}
 function startQuiz(){S.step='quiz';S.qi=0;S.ans={};renderQ();}
 
@@ -339,7 +514,7 @@ function trackResults(r){
   var d={
     experience: r.exp||'',
     category: r.cat||'',
-    budget: S.ans[11]||'',
+    budget: S.ans[12]||'',
     primaryMatch: r.results[0]?r.results[0].name:'',
     secondaryMatch: r.results[1]?r.results[1].name:'',
     usedPick: r.results[2]?r.results[2].name:'',
@@ -365,7 +540,7 @@ function renderResults(r){
   h+=`<div class="prof"><h3>Your Rider Profile</h3><div class="tags">`;
   h+=`<span class="tag">${expNames[r.exp]||r.exp} Rider</span>`;
   h+=`<span class="tag">${catNames[r.cat]||r.cat}</span>`;
-  h+=`<span class="tag">Budget: ${S.ans[11]||'Flexible'}</span>`;
+  h+=`<span class="tag">Budget: ${S.ans[12]||'Flexible'}</span>`;
   if(r.usedPath)h+=`<span class="tag" style="border-color:var(--warn);color:var(--warn)">Used Path Recommended</span>`;
   h+=`</div></div>`;
   // Used banner
