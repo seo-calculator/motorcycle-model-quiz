@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,11 +131,15 @@ function parseMSRP(s){
 }
 
 function shouldUsed(a){
+  // Never show used path if user explicitly wants new
+  if(a[12]==='new-only'||a[12]==='prefer-new')return false;
   const exp=getExp(a);
+  // Budget-driven triggers
   if(a[11]==='under5k')return true;
   if(a[11]==='5-8k'&&(exp==='beginner'||exp==='beg-inter'))return true;
+  // Reliability priority only triggers used path at lower budgets
   const p14=Array.isArray(a[14])?a[14]:[a[14]].filter(Boolean);
-  if(p14.includes('reliable'))return true;
+  if(p14.includes('reliable')&&(a[11]==='under5k'||a[11]==='5-8k'||a[11]==='8-12k'))return true;
   return false;
 }
 
@@ -202,15 +205,40 @@ function getResults(a){
   const cat=getCat(a);
   const usedPath=shouldUsed(a);
   const scored=BIKES.map(b=>({...b,score:scoreBike(b,a)})).filter(b=>b.score>-10);
-  scored.sort((a,b)=>b.score-a.score);
-  // Primary: best new in category
+  scored.sort((x,y)=>y.score-x.score);
+
   const newInCat=scored.filter(b=>b.isNew&&b.cat===cat);
   const usedInCat=scored.filter(b=>!b.isNew&&(b.cat===cat||b.crossover===cat));
-  const primary=newInCat[0]||scored.filter(b=>b.cat===cat)[0]||scored[0];
-  // Secondary: different bike same category or next best
-  const secondary=scored.filter(b=>b!==primary&&(b.cat===cat||b.score>5))[0];
-  // Used alt
-  const usedAlt=usedInCat.filter(b=>b!==primary&&b!==secondary)[0];
+  const pref=a[12]; // yes, open, prefer-new, new-only
+
+  let primary,secondary,usedAlt;
+
+  if(pref==='new-only'){
+    // New only: primary=best new, secondary=2nd best new, used alt=none
+    primary=newInCat[0]||scored.filter(b=>b.isNew)[0];
+    secondary=newInCat.filter(b=>b!==primary)[0]||scored.filter(b=>b.isNew&&b!==primary)[0];
+    usedAlt=null;
+  }else if(pref==='prefer-new'){
+    // Prefer new: primary=best new, secondary=2nd new or best overall, used=best used as value option
+    primary=newInCat[0]||scored.filter(b=>b.isNew)[0]||scored[0];
+    secondary=newInCat.filter(b=>b!==primary)[0]||scored.filter(b=>b!==primary&&b.isNew)[0]||scored.filter(b=>b!==primary)[0];
+    usedAlt=usedInCat[0];
+  }else if(pref==='yes'){
+    // Used enthusiast: primary=best used, secondary=best new as comparison, used alt=2nd used
+    primary=usedInCat[0]||scored[0];
+    secondary=newInCat[0]||scored.filter(b=>b!==primary)[0];
+    usedAlt=usedInCat.filter(b=>b!==primary)[0];
+  }else{
+    // "open" (default): primary=best overall, secondary=next best, used=best used if primary was new
+    primary=scored.filter(b=>b.cat===cat)[0]||scored[0];
+    secondary=scored.filter(b=>b!==primary&&(b.cat===cat||b.score>5))[0];
+    if(primary&&primary.isNew){
+      usedAlt=usedInCat[0];
+    }else{
+      usedAlt=newInCat[0]&&newInCat[0]!==secondary?newInCat[0]:null;
+    }
+  }
+
   const results=[];
   if(primary)results.push({...primary,badge:'primary'});
   if(secondary&&secondary!==primary)results.push({...secondary,badge:'secondary'});
@@ -266,7 +294,7 @@ function renderQ(){
   h+=`<div class="qcard"><div class="qn">${q.num}</div><div class="qt">${q.text}</div>`;
   if(q.note)h+=`<div class="qnote">${q.note}</div>`;
   else h+=`<div style="margin-bottom:16px"></div>`;
-  if(q.multi)h+=`<div class="mn">${SVG.check} Select up to ${q.maxSel||2}</div>`;
+  if(q.multi)h+=`<div class="mn">Select up to ${q.maxSel||2}</div>`;
   h+=`<div class="opts">`;
   q.opts.forEach(o=>{
     const sel=curArr.includes(o.v);
@@ -301,7 +329,7 @@ function startQuiz(){S.step='quiz';S.qi=0;S.ans={};renderQ();}
 // TRACKING: Google Sheets webhook
 // Replace WEBHOOK_URL with the client's Apps Script URL
 // ============================================================
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyDlNGAis-oR3HAYNT0ZLqeCWTC1L5mKx9k9UzdfrwCnDJMQ5aTcvufnIkrLB-FWt_Z_Q/exec';
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxPI5YqR8toh50Un56HddtIF0apW18g7e8ANsKqQ_bAu_Q4BwmL8pD2YakHA2cTTaovWA/exec';
 
 function trackResults(r){
   if(!WEBHOOK_URL) return;
