@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,6 +134,8 @@ function parseMSRP(s){
 function shouldUsed(a){
   // Never show used path if user explicitly wants new
   if(a[12]==='new-only'||a[12]==='prefer-new')return false;
+  // User explicitly wants used
+  if(a[12]==='yes')return true;
   const exp=getExp(a);
   // Budget-driven triggers
   if(a[11]==='under5k')return true;
@@ -342,28 +345,10 @@ function trackResults(r){
     usedPick: r.results[2]?r.results[2].name:'',
     usedPath: r.usedPath?'Yes':'No'
   };
-  // Use a hidden form + iframe to handle Apps Script's 302 redirect
-  try{
-    var iframe=document.createElement('iframe');
-    iframe.name='sheetPost';
-    iframe.style.display='none';
-    document.body.appendChild(iframe);
-    var form=document.createElement('form');
-    form.method='POST';
-    form.action=WEBHOOK_URL;
-    form.target='sheetPost';
-    var input=document.createElement('input');
-    input.type='hidden';
-    input.name='payload';
-    input.value=JSON.stringify(payload);
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
-    setTimeout(function(){
-      document.body.removeChild(form);
-      document.body.removeChild(iframe);
-    },5000);
-  }catch(e){}
+  fetch(WEBHOOK_URL,{
+    method:'POST',
+    body:JSON.stringify(payload)
+  }).catch(()=>{});
 }
 
 function finish(){
@@ -386,7 +371,15 @@ function renderResults(r){
   h+=`</div></div>`;
   // Used banner
   if(r.usedPath){
-    h+=`<div class="ub"><h3>Smart Riders Buy Used First</h3><p>Based on your budget and experience level, we strongly recommend starting with a used motorcycle.</p><ul><li>You will drop your first bike. Used = $50 scratch, not $5,000 heartbreak.</li><li>You will outgrow it. Less investment now = smarter upgrade later.</li><li>Same bike, thousands less. Most beginner bikes barely change between years.</li><li>Rent first, then buy. Try on Riders Share before committing.</li></ul></div>`;
+    const isBeg=r.exp==='beginner'||r.exp==='beg-inter';
+    const lowBudget=r.budget==='under5k'||r.budget==='5-8k'||r.budget==='8-12k';
+    if(isBeg){
+      h+=`<div class="ub"><h3>Smart Riders Buy Used First</h3><p>As a newer rider, starting with a used bike is the smartest move you can make.</p><ul><li>Drops happen. A scratch on a $3K bike stings less than on a $10K bike.</li><li>You will outgrow it. Less investment now means a smarter upgrade later.</li><li>Same bike, thousands less. Most beginner models barely change between years.</li><li>Rent first, then buy. Try it on Riders Share before committing.</li></ul></div>`;
+    }else if(lowBudget){
+      h+=`<div class="ub"><h3>Why Used Makes Sense at This Budget</h3><p>At your price range, the used market opens up excellent options that deliver more bike for the money.</p><ul><li>Depreciation works in your favor. Let someone else absorb the first-owner hit.</li><li>More bike for less money. A 2-3 year old model often has the same features at 60-70% of MSRP.</li><li>Proven reliability. Real-world owner feedback exists on used models.</li><li>Rent first, then buy. Try it on Riders Share before committing.</li></ul></div>`;
+    }else{
+      h+=`<div class="ub"><h3>Why Used Makes Sense for You</h3><p>Experienced riders often find the best value in the used market, where selection, negotiation, and knowledge give you the advantage.</p><ul><li>You know what you want. Skip the new-bike markup and buy exactly the right machine.</li><li>Modification-ready. Used bikes are easier to customize without worrying about voiding warranty.</li><li>Wider selection. Access discontinued models, limited editions, and platforms no longer sold new.</li><li>Rent first, then buy. Try it on Riders Share before committing.</li></ul></div>`;
+    }
   }
   // Result cards
   r.results.forEach(bike=>{
