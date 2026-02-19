@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,7 +301,7 @@ function startQuiz(){S.step='quiz';S.qi=0;S.ans={};renderQ();}
 // TRACKING: Google Sheets webhook
 // Replace WEBHOOK_URL with the client's Apps Script URL
 // ============================================================
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw3-vFHLmnDzJUON9TjMTdaCkvgPCiV6Ya1DfI3In0KfwkkCu9ixZrw_WqnzxJaq50m2w/exec;
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyDlNGAis-oR3HAYNT0ZLqeCWTC1L5mKx9k9UzdfrwCnDJMQ5aTcvufnIkrLB-FWt_Z_Q/exec';
 
 function trackResults(r){
   if(!WEBHOOK_URL) return;
@@ -313,8 +314,28 @@ function trackResults(r){
     usedPick: r.results[2]?r.results[2].name:'',
     usedPath: r.usedPath?'Yes':'No'
   };
-  // Fire-and-forget POST; no-cors because Apps Script redirects
-  fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)}).catch(()=>{});
+  // Use a hidden form + iframe to handle Apps Script's 302 redirect
+  try{
+    var iframe=document.createElement('iframe');
+    iframe.name='sheetPost';
+    iframe.style.display='none';
+    document.body.appendChild(iframe);
+    var form=document.createElement('form');
+    form.method='POST';
+    form.action=WEBHOOK_URL;
+    form.target='sheetPost';
+    var input=document.createElement('input');
+    input.type='hidden';
+    input.name='payload';
+    input.value=JSON.stringify(payload);
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(function(){
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    },5000);
+  }catch(e){}
 }
 
 function finish(){
