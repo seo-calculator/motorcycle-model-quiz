@@ -99,7 +99,7 @@ function getCat(a){
   if(['250-500','500+'].includes(a[7])){sc.touring+=3;sc.cruiser+=1;}
   if(['frequently','primary'].includes(a[8])){sc.touring+=2;sc.cruiser+=1;}
   const pm={cruiser:{cruiser:3},standard:{standard:3},sport:{sport:3},'adv-touring':{adventure:2,touring:2}};
-  Object.entries(pm[a[12]]||{}).forEach(([k,v])=>sc[k]+=v);
+  Object.entries(pm[a[11]]||{}).forEach(([k,v])=>sc[k]+=v);
   const p14=Array.isArray(a[15])?a[15]:[a[15]].filter(Boolean);
   p14.forEach(p=>{
     if(p==='comfort'){sc.touring+=2;sc.cruiser+=1;}
@@ -222,18 +222,20 @@ function scoreBike(bike,a){
   // Crossover logic
   if(bike.crossover===cat)s+=7;
 
-  // Budget (Q11)
+  // Budget (Q12)
   const[blo,bhi]=budgetRange(a);
   if(bike.isNew){
     const p=parseMSRP(bike.msrp);
-    if(p>=blo&&p<=bhi)s+=5;
-    else if(p<=bhi*1.15)s+=2;
-    else s-=3;
+    if(p>=blo&&p<=bhi)s+=8;
+    else if(p<=bhi*1.15)s+=3;
+    else if(p>bhi*1.3)s-=10;
+    else s-=5;
   }else{
     const[plo,phi]=parsePrice(bike.priceRange);
-    if(plo>=blo*.7&&phi<=bhi*1.2)s+=5;
-    else if(plo<=bhi)s+=2;
-    else s-=3;
+    if(plo>=blo*.7&&phi<=bhi*1.2)s+=8;
+    else if(plo<=bhi)s+=3;
+    else if(plo>bhi*1.3)s-=10;
+    else s-=5;
   }
 
   // New-only filter (Q12)
@@ -353,24 +355,24 @@ function scoreBike(bike,a){
     if(bike.whyBuy&&/liquid.cool/i.test(bike.whyBuy))s+=1;
   }
 
-  // Paved vs unpaved (Q5) - bonus/penalty beyond category assignment
-  if(['50-50','offroad'].includes(a[5])){
+  // Paved vs unpaved (Q6) - bonus/penalty beyond category assignment
+  if(['50-50','offroad'].includes(a[6])){
     if(bike.cat!=='adventure')s-=2;
     if(bike.bestFor&&/off.road|trail|spoked|21/i.test(bike.bestFor))s+=2;
   }
-  if(a[5]==='paved'&&bike.cat==='adventure'){
+  if(a[6]==='paved'&&bike.cat==='adventure'){
     // If 100% paved but ended up in adventure category, favor road-biased
     if(bike.bestFor&&/road.bias|sport.tour/i.test(bike.bestFor))s+=1;
   }
 
-  // Ride distance (Q6) - long distance rewards touring features
-  if(['250-500','500+'].includes(a[6])){
+  // Ride distance (Q7) - long distance rewards touring features
+  if(['250-500','500+'].includes(a[7])){
     if(bike.bestFor&&/touring|comfort|cruise|luggage|shaft|DCT/i.test(bike.bestFor))s+=1;
     if(bike.whyBuy&&/touring|shaft drive|cruise/i.test(bike.whyBuy))s+=1;
   }
 
-  // Passenger (Q7) - frequent/primary passenger penalizes small bikes
-  if(['frequently','primary'].includes(a[7])){
+  // Passenger (Q8) - frequent/primary passenger penalizes small bikes
+  if(['frequently','primary'].includes(a[8])){
     const bcc2=parseCCFromEngine(bike.engine);
     if(bcc2<500)s-=2;
     else if(bcc2>=650)s+=1;
