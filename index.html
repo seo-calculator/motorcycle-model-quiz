@@ -335,7 +335,7 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyVa3lxcTwm4BX3pyMp
 
 function trackResults(r){
   if(!WEBHOOK_URL) return;
-  const payload={
+  const p=new URLSearchParams({
     experience: r.exp||'',
     category: r.cat||'',
     budget: S.ans[11]||'',
@@ -343,12 +343,9 @@ function trackResults(r){
     secondaryMatch: r.results[1]?r.results[1].name:'',
     usedPick: r.results[2]?r.results[2].name:'',
     usedPath: r.usedPath?'Yes':'No'
-  };
-  fetch(WEBHOOK_URL,{
-    method:'POST',
-    mode:'no-cors',
-    body:JSON.stringify(payload)
-  }).catch(()=>{});
+  });
+  var img=new Image();
+  img.src=WEBHOOK_URL+'?'+p.toString();
 }
 
 function finish(){
