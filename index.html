@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -335,7 +336,7 @@ const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyVa3lxcTwm4BX3pyMp
 
 function trackResults(r){
   if(!WEBHOOK_URL) return;
-  const p=new URLSearchParams({
+  var d={
     experience: r.exp||'',
     category: r.cat||'',
     budget: S.ans[11]||'',
@@ -343,9 +344,15 @@ function trackResults(r){
     secondaryMatch: r.results[1]?r.results[1].name:'',
     usedPick: r.results[2]?r.results[2].name:'',
     usedPath: r.usedPath?'Yes':'No'
-  });
-  var img=new Image();
-  img.src=WEBHOOK_URL+'?'+p.toString();
+  };
+  var p=new URLSearchParams(d);
+  var url=WEBHOOK_URL+'?'+p.toString();
+  // Method 1: Image GET (bypasses CORS entirely)
+  try{var img=new Image();img.src=url;}catch(e){}
+  // Method 2: Fetch POST with no-cors
+  try{fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(d)}).catch(function(){});}catch(e){}
+  // Method 3: Script tag GET (another CORS bypass)
+  try{var s=document.createElement('script');s.src=url;document.body.appendChild(s);setTimeout(function(){try{document.body.removeChild(s);}catch(e){}},5000);}catch(e){}
 }
 
 function finish(){
