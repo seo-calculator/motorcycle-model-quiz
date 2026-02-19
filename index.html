@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -332,7 +331,7 @@ function startQuiz(){S.step='quiz';S.qi=0;S.ans={};renderQ();}
 // TRACKING: Google Sheets webhook
 // Replace WEBHOOK_URL with the client's Apps Script URL
 // ============================================================
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzpkAzjzYyqqbYlZmgc-0AaJVfa5jfSau7dkRMty0Pp9rafcEnXPQm7BKqFLWJn4BYi9w/exec';
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyVa3lxcTwm4BX3pyMpg0EaSeb_ldd2xmQStyIGNis7JwhRdn8p_-F-kZq-G0ROMzbycw/exec';
 
 function trackResults(r){
   if(!WEBHOOK_URL) return;
@@ -347,6 +346,7 @@ function trackResults(r){
   };
   fetch(WEBHOOK_URL,{
     method:'POST',
+    mode:'no-cors',
     body:JSON.stringify(payload)
   }).catch(()=>{});
 }
