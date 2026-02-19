@@ -346,13 +346,8 @@ function trackResults(r){
     usedPath: r.usedPath?'Yes':'No'
   };
   var p=new URLSearchParams(d);
-  var url=WEBHOOK_URL+'?'+p.toString();
-  // Method 1: Image GET (bypasses CORS entirely)
-  try{var img=new Image();img.src=url;}catch(e){}
-  // Method 2: Fetch POST with no-cors
-  try{fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(d)}).catch(function(){});}catch(e){}
-  // Method 3: Script tag GET (another CORS bypass)
-  try{var s=document.createElement('script');s.src=url;document.body.appendChild(s);setTimeout(function(){try{document.body.removeChild(s);}catch(e){}},5000);}catch(e){}
+  var img=new Image();
+  img.src=WEBHOOK_URL+'?'+p.toString();
 }
 
 function finish(){
