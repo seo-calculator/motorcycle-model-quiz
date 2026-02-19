@@ -296,9 +296,31 @@ function next(){if(S.qi<19){S.qi++;renderQ();}}
 function prev(){if(S.qi>0){S.qi--;renderQ();}}
 function startQuiz(){S.step='quiz';S.qi=0;S.ans={};renderQ();}
 
+// ============================================================
+// TRACKING: Google Sheets webhook
+// Replace WEBHOOK_URL with the client's Apps Script URL
+// ============================================================
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycby-Rk_iwm-cjKAGpZR9IGu9VLTfIlVlv4wl2B06p5yxFEOKEMkjP7rgy5F4SFI6Tz_zBw/exec';
+
+function trackResults(r){
+  if(!WEBHOOK_URL) return;
+  const payload={
+    experience: r.exp||'',
+    category: r.cat||'',
+    budget: S.ans[11]||'',
+    primaryMatch: r.results[0]?r.results[0].name:'',
+    secondaryMatch: r.results[1]?r.results[1].name:'',
+    usedPick: r.results[2]?r.results[2].name:'',
+    usedPath: r.usedPath?'Yes':'No'
+  };
+  // Fire-and-forget POST; no-cors because Apps Script redirects
+  fetch(WEBHOOK_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(payload)}).catch(()=>{});
+}
+
 function finish(){
   S.step='results';
   const r=getResults(S.ans);
+  trackResults(r);
   renderResults(r);
 }
 
