@@ -260,8 +260,12 @@ function scoreBike(bike,a){
   const brandPrefs=Array.isArray(a[18])?a[18]:[a[18]].filter(Boolean);
   const hasBrandPref=brandPrefs.length>0&&!brandPrefs.includes('any');
   if(hasBrandPref){
-    if(brandPrefs.includes(bike.brand))s+=6;
-    else s-=3;
+    if(brandPrefs.includes(bike.brand)){
+      // Fewer brands selected = stronger loyalty signal
+      s+=brandPrefs.length===1?12:brandPrefs.length===2?9:6;
+    }else{
+      s-=brandPrefs.length===1?8:brandPrefs.length===2?5:3;
+    }
   }
 
   // Engine character (Q16)
