@@ -201,8 +201,11 @@ function userCCTier(a){
 function expOk(bike,userExp,a){
   const bi=EL.indexOf(bike.expLevel);
   const ui=EL.indexOf(userExp);
-  // Base experience gate: bike can be at most 1 level above user
-  if(bi>ui+1)return false;
+  // Touring and cruiser bikes tagged "advanced" are heavy/expensive, not dangerous
+  // like a liter sportbike. Allow 2-level gap for these categories.
+  const relaxedCats=['touring','cruiser'];
+  const maxGap=relaxedCats.includes(bike.cat)?2:1;
+  if(bi>ui+maxGap)return false;
   // CC experience hard gate: prevent huge displacement jumps
   // Use raw CC tier (without upgrade shift) for safety gates
   const rawDm={under250:0,'250-400':1,'401-650':2,'651-900':3,'901+':4};
@@ -410,26 +413,25 @@ function getResults(a){
   let primary,secondary,usedAlt;
 
   if(pref==='new-only'){
-    // New only: primary=best new, secondary=2nd best new, used alt=none
     primary=newInCat[0]||scored.filter(b=>b.isNew)[0];
     secondary=newInCat.filter(b=>b!==primary)[0]||scored.filter(b=>b.isNew&&b!==primary)[0];
     usedAlt=null;
   }else if(pref==='prefer-new'){
-    // Prefer new: primary=best new, secondary=2nd new or best overall, used=best used as value option
     primary=newInCat[0]||scored.filter(b=>b.isNew)[0]||scored[0];
     secondary=newInCat.filter(b=>b!==primary)[0]||scored.filter(b=>b!==primary&&b.isNew)[0]||scored.filter(b=>b!==primary)[0];
-    usedAlt=usedInCat[0];
+    usedAlt=usedInCat[0]||null;
   }else if(pref==='yes'){
-    // Used enthusiast: primary=best used, secondary=best new as comparison, used alt=2nd used
     primary=usedInCat[0]||scored[0];
     secondary=newInCat[0]||scored.filter(b=>b!==primary)[0];
-    usedAlt=usedInCat.filter(b=>b!==primary)[0];
+    usedAlt=usedInCat.filter(b=>b!==primary)[0]||null;
   }else{
-    // "open" (default): primary=best overall, secondary=next best, used=best used if primary was new
-    primary=scored.filter(b=>b.cat===cat)[0]||scored[0];
-    secondary=scored.filter(b=>b!==primary&&(b.cat===cat||b.score>5))[0];
+    // "open" (default): primary=best in-category, secondary=next best in-category, used=best used in-category
+    const inCat=scored.filter(b=>b.cat===cat);
+    primary=inCat[0]||scored[0];
+    // Secondary: prefer a different bike in the same category, or different new/used status for variety
+    secondary=inCat.filter(b=>b!==primary&&b.isNew!==primary.isNew)[0]||inCat.filter(b=>b!==primary)[0]||scored.filter(b=>b!==primary)[0];
     if(primary&&primary.isNew){
-      usedAlt=usedInCat[0];
+      usedAlt=usedInCat[0]||null;
     }else{
       usedAlt=newInCat[0]&&newInCat[0]!==secondary?newInCat[0]:null;
     }
@@ -438,7 +440,14 @@ function getResults(a){
   const results=[];
   if(primary)results.push({...primary,badge:'primary'});
   if(secondary&&secondary!==primary)results.push({...secondary,badge:'secondary'});
-  if(usedAlt&&usedAlt!==primary&&usedAlt!==secondary)results.push({...usedAlt,badge:'used'});
+  // Used alt: find best used in category not already assigned
+  if(usedAlt&&usedAlt!==primary&&usedAlt!==secondary){
+    results.push({...usedAlt,badge:'used'});
+  }else if(primary||secondary){
+    // Fallback: find next best used bike in category not already used
+    const fallbackUsed=usedInCat.find(b=>b!==primary&&b!==secondary);
+    if(fallbackUsed)results.push({...fallbackUsed,badge:'used'});
+  }
   return{results,cat,exp:getExp(a),usedPath,budget:a[12]};
 }
 
