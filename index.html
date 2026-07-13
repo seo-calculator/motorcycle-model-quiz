@@ -49,7 +49,13 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:400px;backgro
 .ege{font-size:.8rem;color:#f87171;margin-top:8px;min-height:1em}
 .egb{display:flex;flex-direction:column;gap:10px;margin-top:22px}.egskip{background:none;border:none;color:var(--t3);font-family:var(--f);font-size:.85rem;font-weight:600;cursor:pointer;padding:8px;text-decoration:underline;transition:color var(--tr)}.egskip:hover{color:var(--t1)}
 .egfine{font-size:.72rem;color:var(--t3);text-align:center;margin-top:14px;line-height:1.5}
-@media(max-width:500px){.qc{padding:12px 12px 32px}.qcard{padding:20px 16px}.feats{grid-template-columns:1fr}.rsp{grid-template-columns:1fr 1fr}}
+.bcta{display:flex;flex-direction:column;align-items:center;gap:10px;background:linear-gradient(135deg,#162040,#1a2540);border:1px solid var(--brd-s);border-radius:var(--r2);padding:22px 20px;margin:0 0 20px;text-align:center}
+.bcta .bct{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--t1);line-height:1.25}
+.bcta .bcs{font-size:.86rem;color:var(--t2);line-height:1.5;max-width:420px}
+.bcta a{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ac);color:#fff;padding:14px 32px;border-radius:var(--r);font-weight:700;text-decoration:none;font-size:.95rem;font-family:var(--f);transition:all var(--tr);margin-top:4px}
+.bcta a:hover{background:var(--ac2);box-shadow:0 4px 24px var(--glow2);transform:translateY(-1px)}
+.bcta a svg{width:16px;height:16px;flex-shrink:0}
+@media(max-width:500px){.qc{padding:12px 12px 32px}.qcard{padding:20px 16px}.feats{grid-template-columns:1fr}.rsp{grid-template-columns:1fr 1fr}.bcta a{width:100%}}
 </style>
 </head>
 <body>
@@ -550,6 +556,58 @@ function prev(){if(S.qi>0){S.qi--;renderQ();}}
 function startQuiz(){S.step='quiz';S.qi=0;S.ans={};S.res=null;S.sid='';S.clicked=false;renderQ();}
 
 // ============================================================
+// BRAND CTA: maps bike brand to Riders Share /brand/ page + UTM
+// Only brands with meaningful rental inventory get a brand page.
+// Thin-inventory brands (Royal Enfield, Aprilia) and defunct or
+// niche brands (Victory, Buell, Moto Guzzi) fall back to the
+// homepage so riders land somewhere with bikes to actually rent.
+// ============================================================
+const BRAND_URLS={
+  honda:'honda',
+  kawasaki:'kawasaki',
+  yamaha:'yamaha',
+  suzuki:'suzuki',
+  bmw:'bmw',
+  harley:'harley-davidson',
+  triumph:'triumph',
+  ktm:'ktm',
+  indian:'indian',
+  ducati:'ducati'
+};
+
+const BRAND_NAMES={
+  honda:'Honda',
+  kawasaki:'Kawasaki',
+  yamaha:'Yamaha',
+  suzuki:'Suzuki',
+  bmw:'BMW',
+  harley:'Harley-Davidson',
+  triumph:'Triumph',
+  ktm:'KTM',
+  indian:'Indian',
+  ducati:'Ducati',
+  royalenfield:'Royal Enfield',
+  aprilia:'Aprilia',
+  victory:'Victory',
+  buell:'Buell',
+  other:'Moto Guzzi'
+};
+
+function brandCtaUrl(brand){
+  const slug=BRAND_URLS[brand];
+  const base=slug
+    ? 'https://www.riders-share.com/brand/'+slug
+    : 'https://www.riders-share.com';
+  const utm=new URLSearchParams({
+    utm_source:'quiz',
+    utm_medium:'referral',
+    utm_campaign:'motorcycle_match_quiz',
+    utm_content:slug||('homepage_'+brand)
+  });
+  return base+'?'+utm.toString();
+}
+
+// ============================================================
 // TRACKING: Google Sheets webhook
 // Replace WEBHOOK_URL with the client's Apps Script URL
 // ============================================================
@@ -696,10 +754,22 @@ function renderResults(r){
     h+=`</div>`;
     if(!bike.isNew&&bike.watchFor)h+=`<div class="wf"><strong>Watch For</strong>${bike.watchFor}</div>`;
     h+=`</div>`;
+    // Brand CTA sits directly beneath the top match
+    if(isPri){
+      const bName=BRAND_NAMES[bike.brand]||bike.brand;
+      const bUrl=brandCtaUrl(bike.brand);
+      const hasPage=!!BRAND_URLS[bike.brand];
+      h+=`<div class="bcta">
+        <div class="bct">Try Before You Buy</div>
+        <p class="bcs">${hasPage
+          ? `Rent a ${bName} from a local owner and see how the ${bike.name} feels before you commit thousands to it.`
+          : `${bName} rentals are limited, but you can rent something close from a local owner and get a feel for the ride before you commit thousands.`}</p>
+        <a href="${bUrl}" target="_blank" rel="noopener" onclick="trackRentalClick()">${hasPage?`Browse ${bName} Rentals`:'Browse Motorcycle Rentals'} ${SVG.ext}</a>
+      </div>`;
+    }
   });
   // Rent CTA
-  const primaryName=r.results[0]?r.results[0].name:'a motorcycle';
-  h+=`<div class="cta"><h3>Try Before You Buy on Riders Share</h3><p>Rent ${primaryName} (or similar) from a local owner. Confirm it's the right fit before you spend thousands.</p><a href="https://www.riders-share.com" target="_blank" rel="noopener" onclick="trackRentalClick()">Browse Rentals ${SVG.ext}</a></div>`;
+  h+=`<div class="cta"><h3>Not Sure Which One Fits?</h3><p>Rent a few before you buy. Riders Share connects you with local owners so you can put real miles on each bike and find out which one you actually want in your garage.</p><a href="https://www.riders-share.com?utm_source=quiz&utm_medium=referral&utm_campaign=motorcycle_match_quiz&utm_content=footer" target="_blank" rel="noopener" onclick="trackRentalClick()">Browse Rentals Near You ${SVG.ext}</a></div>`;
   // Retake
   h+=`<div class="ret"><button class="bret" onclick="startQuiz()">Retake Quiz</button></div>`;
   h+=`<div class="cred">Quiz data and content strategy by <a href="https://rizenmetrics.com" target="_blank" rel="noopener">RiZen Metrics</a> for <a href="https://www.riders-share.com" target="_blank" rel="noopener">Riders Share</a></div>`;
