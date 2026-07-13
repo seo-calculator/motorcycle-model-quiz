@@ -42,6 +42,13 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:400px;backgro
 .prof{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:20px;margin-bottom:24px}.prof h3{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
 .ret{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--brd)}.bret{background:var(--bg2);border:1px solid var(--brd);color:var(--t2);padding:10px 24px;border-radius:var(--r);font-weight:600;cursor:pointer;font-family:var(--f);font-size:.88rem;transition:all var(--tr)}.bret:hover{border-color:var(--brd-h);color:var(--t1)}
 .cred{text-align:center;margin-top:32px;padding:16px;font-size:.75rem;color:var(--t3)}.cred a{color:var(--ac2);text-decoration:none}.cred a:hover{text-decoration:underline}
+.eg{text-align:left}.eg .egt{font-family:var(--fd);font-size:1.5rem;font-weight:700;margin-bottom:6px;text-align:center}.eg .egs{font-size:.9rem;color:var(--t2);margin-bottom:20px;text-align:center;line-height:1.5}
+.egp{list-style:none;margin:0 0 20px;display:grid;gap:8px}.egp li{display:flex;align-items:flex-start;gap:8px;font-size:.88rem;color:var(--t2);background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:10px 12px;line-height:1.4}.egp li::before{content:'\2713';color:var(--ac2);font-weight:700;font-size:.8rem;margin-top:2px}
+.egf input[type=email]{width:100%;font-family:var(--f);font-size:1rem;color:var(--t1);background:var(--bg2);border:1px solid var(--brd);border-radius:var(--r);padding:14px 16px;outline:none;transition:all var(--tr)}.egf input[type=email]:focus{border-color:var(--brd-s);box-shadow:0 0 0 1px var(--brd-s)}.egf input[type=email]::placeholder{color:var(--t3)}
+.egc{display:flex;align-items:flex-start;gap:10px;margin-top:14px;cursor:pointer}.egc input[type=checkbox]{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--ac);cursor:pointer}.egc span{font-size:.8rem;color:var(--t3);line-height:1.5}
+.ege{font-size:.8rem;color:#f87171;margin-top:8px;min-height:1em}
+.egb{display:flex;flex-direction:column;gap:10px;margin-top:22px}.egskip{background:none;border:none;color:var(--t3);font-family:var(--f);font-size:.85rem;font-weight:600;cursor:pointer;padding:8px;text-decoration:underline;transition:color var(--tr)}.egskip:hover{color:var(--t1)}
+.egfine{font-size:.72rem;color:var(--t3);text-align:center;margin-top:14px;line-height:1.5}
 @media(max-width:500px){.qc{padding:12px 12px 32px}.qcard{padding:20px 16px}.feats{grid-template-columns:1fr}.rsp{grid-template-columns:1fr 1fr}}
 </style>
 </head>
@@ -76,7 +83,7 @@ const QS=[
 {id:22,sec:"Advanced Factors",num:"Q22",text:"What type of motorcycle interests you most?",note:"Select up to 2.",multi:true,maxSel:2,opts:[{l:"A",n:"Cruiser",d:"Relaxed, low-slung, open road",v:"cruiser"},{l:"B",n:"Standard / Naked",d:"Upright, versatile, everyday",v:"standard"},{l:"C",n:"Sport / Sportbike",d:"Performance, track, speed",v:"sport"},{l:"D",n:"Adventure / Dual-Sport",d:"Mixed terrain, exploration",v:"adventure"},{l:"E",n:"Touring / Sport-Touring",d:"Long distance, comfort, luggage",v:"touring"},{l:"F",n:"Not sure yet",v:"unsure"}]}
 ];
 
-let S={step:'landing',qi:0,ans:{}};
+let S={step:'landing',qi:0,ans:{},sid:'',clicked:false};
 const app=document.getElementById('app');
 const EL=['beginner','beg-inter','intermediate','inter-adv','advanced'];
 
@@ -540,35 +547,105 @@ function pick(qid,val,multi){
 
 function next(){if(S.qi<21){S.qi++;renderQ();}}
 function prev(){if(S.qi>0){S.qi--;renderQ();}}
-function startQuiz(){S.step='quiz';S.qi=0;S.ans={};renderQ();}
+function startQuiz(){S.step='quiz';S.qi=0;S.ans={};S.res=null;S.sid='';S.clicked=false;renderQ();}
 
 // ============================================================
 // TRACKING: Google Sheets webhook
 // Replace WEBHOOK_URL with the client's Apps Script URL
 // ============================================================
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzGX2JDZP6EzKYTjwdWxcf9EDUx0Eypsl0HuIlVahZNEod8_9PpAjHn8ZVg45N2kcAAYw/exec';
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwkV-gDS0Jw8gD1e0eYX9sPXJSFeiaYDaKy8pR5G_DUuMHgPgT3tsH7j7C2Fue5KWE/exec';
 
-function trackResults(r){
+function newSid(){
+  return 'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+}
+
+function trackResults(r,email){
   if(!WEBHOOK_URL) return;
   var d={
+    event: 'complete',
+    sessionId: S.sid,
     experience: r.exp||'',
     category: r.cat||'',
     budget: S.ans[12]||'',
     primaryMatch: r.results[0]?r.results[0].name:'',
     secondaryMatch: r.results[1]?r.results[1].name:'',
     usedPick: r.results[2]?r.results[2].name:'',
-    usedPath: r.usedPath?'Yes':'No'
+    usedPath: r.usedPath?'Yes':'No',
+    email: email||''
   };
   var p=new URLSearchParams(d);
   var img=new Image();
   img.src=WEBHOOK_URL+'?'+p.toString();
 }
 
+function trackRentalClick(){
+  if(S.clicked) return;
+  S.clicked=true;
+  if(!WEBHOOK_URL||!S.sid) return;
+  var p=new URLSearchParams({event:'rental_click',sessionId:S.sid});
+  var img=new Image();
+  img.src=WEBHOOK_URL+'?'+p.toString();
+}
+
+// ============================================================
+// EMAIL CAPTURE GATE (optional, shown before results)
+// ============================================================
 function finish(){
+  S.step='email';
+  S.sid=newSid();
+  S.clicked=false;
+  S.res=getResults(S.ans);
+  renderEmailGate();
+}
+
+function renderEmailGate(){
+  app.innerHTML=`
+  <div class="qcard eg">
+    <div class="qn">Last Step (Optional)</div>
+    <div class="egt">Your Matches Are Ready</div>
+    <p class="egs">Before we show them, want in on rider-only perks? Add your email to join the Riders Share list. Optional, and your matches are on the next screen either way.</p>
+    <ul class="egp">
+      <li>Exclusive promotions and rental discounts</li>
+      <li>Try before you buy deals on the bikes you matched with</li>
+      <li>New listings, route guides, and rider tips</li>
+    </ul>
+    <div class="egf">
+      <input type="email" id="egEmail" placeholder="you@example.com" autocomplete="email" inputmode="email">
+      <label class="egc" for="egOptin">
+        <input type="checkbox" id="egOptin">
+        <span>Yes, add me to the Riders Share email list. I agree to receive marketing emails about exclusive promotions, try before you buy deals, rental offers, and rider content. I can unsubscribe at any time using the link in any email. See the <a href="https://www.riders-share.com/privacy-policy" target="_blank" rel="noopener" style="color:var(--ac2)">Privacy Policy</a> for details on how Riders Share handles your information.</span>
+      </label>
+      <div class="ege" id="egErr"></div>
+    </div>
+    <div class="egb">
+      <button class="btn bn" style="justify-content:center" onclick="submitEmail()">${SVG.star} Sign Me Up and Show My Results</button>
+      <button class="egskip" onclick="skipEmail()">No thanks, just show my results</button>
+    </div>
+    <p class="egfine">Providing your email is optional. You will see your full results either way.</p>
+  </div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+  var i=document.getElementById('egEmail');
+  if(i)i.addEventListener('keydown',function(e){if(e.key==='Enter')submitEmail();});
+}
+
+function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);}
+
+function submitEmail(){
+  const val=(document.getElementById('egEmail').value||'').trim();
+  const optin=document.getElementById('egOptin').checked;
+  const err=document.getElementById('egErr');
+  if(!val){err.textContent='Enter an email address, or choose "No thanks" to skip.';return;}
+  if(!validEmail(val)){err.textContent='That email address does not look right. Check it and try again.';return;}
+  if(!optin){err.textContent='Check the consent box so we know it is okay to email you.';return;}
   S.step='results';
-  const r=getResults(S.ans);
-  trackResults(r);
-  renderResults(r);
+  trackResults(S.res,val);
+  renderResults(S.res);
+}
+
+function skipEmail(){
+  S.step='results';
+  trackResults(S.res,'');
+  renderResults(S.res);
 }
 
 function renderResults(r){
@@ -622,7 +699,7 @@ function renderResults(r){
   });
   // Rent CTA
   const primaryName=r.results[0]?r.results[0].name:'a motorcycle';
-  h+=`<div class="cta"><h3>Try Before You Buy on Riders Share</h3><p>Rent ${primaryName} (or similar) from a local owner. Confirm it's the right fit before you spend thousands.</p><a href="https://www.riders-share.com" target="_blank" rel="noopener">Browse Rentals ${SVG.ext}</a></div>`;
+  h+=`<div class="cta"><h3>Try Before You Buy on Riders Share</h3><p>Rent ${primaryName} (or similar) from a local owner. Confirm it's the right fit before you spend thousands.</p><a href="https://www.riders-share.com" target="_blank" rel="noopener" onclick="trackRentalClick()">Browse Rentals ${SVG.ext}</a></div>`;
   // Retake
   h+=`<div class="ret"><button class="bret" onclick="startQuiz()">Retake Quiz</button></div>`;
   h+=`<div class="cred">Quiz data and content strategy by <a href="https://rizenmetrics.com" target="_blank" rel="noopener">RiZen Metrics</a> for <a href="https://www.riders-share.com" target="_blank" rel="noopener">Riders Share</a></div>`;
