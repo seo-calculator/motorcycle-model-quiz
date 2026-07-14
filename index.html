@@ -89,7 +89,7 @@ const QS=[
 {id:22,sec:"Advanced Factors",num:"Q22",text:"What type of motorcycle interests you most?",note:"Select up to 2.",multi:true,maxSel:2,opts:[{l:"A",n:"Cruiser",d:"Relaxed, low-slung, open road",v:"cruiser"},{l:"B",n:"Standard / Naked",d:"Upright, versatile, everyday",v:"standard"},{l:"C",n:"Sport / Sportbike",d:"Performance, track, speed",v:"sport"},{l:"D",n:"Adventure / Dual-Sport",d:"Mixed terrain, exploration",v:"adventure"},{l:"E",n:"Touring / Sport-Touring",d:"Long distance, comfort, luggage",v:"touring"},{l:"F",n:"Not sure yet",v:"unsure"}]}
 ];
 
-let S={step:'landing',qi:0,ans:{},sid:'',clicked:false};
+let S={step:'landing',qi:0,ans:{},sid:'',clicked:false,loggedIn:''};
 const app=document.getElementById('app');
 const EL=['beginner','beg-inter','intermediate','inter-adv','advanced'];
 
@@ -608,6 +608,38 @@ function brandCtaUrl(brand){
 }
 
 // ============================================================
+// LOGIN STATE via postMessage from the parent page
+// The parent reads its own meteorUserId cookie and tells us only
+// whether it exists. No username or user ID is ever received,
+// transmitted, or stored. We only care about Yes/No.
+// ============================================================
+const PARENT_ORIGINS=[
+  'https://www.riders-share.com',
+  'https://riders-share.com'
+];
+
+window.addEventListener('message',function(e){
+  if(PARENT_ORIGINS.indexOf(e.origin)===-1) return;
+  if(!e.data||e.data.type!=='rsLoginState') return;
+  S.loggedIn = e.data.loggedIn ? 'Yes' : 'No';
+});
+
+function requestLoginState(){
+  if(window.parent===window) return; // not framed, nothing to ask
+  PARENT_ORIGINS.forEach(function(o){
+    try{ window.parent.postMessage({type:'rsRequestLoginState'},o); }catch(err){}
+  });
+}
+// Ask on load, then retry a few times in case the parent's listener
+// attaches after ours. Stops as soon as we get an answer.
+requestLoginState();
+var loginTries=0;
+var loginPoll=setInterval(function(){
+  if(S.loggedIn!==''||++loginTries>5){ clearInterval(loginPoll); return; }
+  requestLoginState();
+},600);
+
+// ============================================================
 // TRACKING: Google Sheets webhook
 // Replace WEBHOOK_URL with the client's Apps Script URL
 // ============================================================
@@ -629,7 +661,8 @@ function trackResults(r,email){
     secondaryMatch: r.results[1]?r.results[1].name:'',
     usedPick: r.results[2]?r.results[2].name:'',
     usedPath: r.usedPath?'Yes':'No',
-    email: email||''
+    email: email||'',
+    loggedIn: S.loggedIn||''
   };
   var p=new URLSearchParams(d);
   var img=new Image();
