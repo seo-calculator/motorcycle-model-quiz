@@ -44,19 +44,20 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:400px;backgro
 .hq-free{display:inline-block;background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.45);color:var(--ok);font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:100px;margin-left:7px;vertical-align:middle}
 .hq h3{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:#fff;line-height:1.12;margin-bottom:8px;letter-spacing:.01em;position:relative}
 .hq .hq-sub{font-size:.9rem;color:#c5cfe0;line-height:1.6;margin-bottom:15px;position:relative;max-width:62ch}
-.hq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:16px;position:relative}
-.hq-stat{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:11px 9px;text-align:center}
-.hq-stat b{display:block;font-family:var(--fd);font-size:1.32rem;font-weight:700;color:var(--ac2);line-height:1.1}
+.hq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;position:relative}
+.hq-stat{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:13px 9px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:74px}
+.hq-stat b{display:block;font-family:var(--fd);font-size:1.45rem;font-weight:700;color:var(--ac2);line-height:1.05;letter-spacing:-.01em}
 .hq-stat span{display:block;font-size:.66rem;color:var(--t2);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;line-height:1.3}
 .hq-feat{list-style:none;margin-bottom:17px;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
 .hq-feat li{font-size:.85rem;color:#c5cfe0;padding:3px 0 3px 21px;position:relative;line-height:1.45}
 .hq-feat li::before{content:'\2713';position:absolute;left:0;top:3px;color:var(--ok);font-weight:700;font-size:.8rem}
 .hq-cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;position:relative}
-.hq-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--ac);color:#fff;font-family:var(--fd);font-size:.95rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;padding:12px 22px;border-radius:var(--r);transition:.18s;border:1px solid var(--ac)}
+.hq-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ac);color:#fff;font-family:var(--f);font-size:.92rem;font-weight:600;letter-spacing:0;text-decoration:none;padding:0 22px;height:46px;white-space:nowrap;border-radius:var(--r);transition:.18s;border:1px solid var(--ac)}
+.hq-btn svg{width:17px;height:17px;flex:none}
 .hq-btn:hover{background:var(--ac2);border-color:var(--ac2);transform:translateY(-1px);box-shadow:0 6px 18px var(--glow2)}
-.hq-btn2{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:transparent;color:var(--ac2);font-family:var(--fd);font-size:.95rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border-radius:var(--r);border:1px solid rgba(59,125,221,.5);transition:.18s}
+.hq-btn2{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:transparent;color:var(--ac2);font-family:var(--f);font-size:.92rem;font-weight:600;letter-spacing:0;text-decoration:none;padding:0 20px;height:46px;white-space:nowrap;border-radius:var(--r);border:1px solid rgba(59,125,221,.5);transition:.18s}
 .hq-btn2:hover{background:rgba(59,125,221,.12);border-color:var(--ac2);color:#fff}
-@media(max-width:640px){.hq{padding:18px}.hq h3{font-size:1.32rem}.hq-grid{grid-template-columns:repeat(2,1fr)}.hq-feat{grid-template-columns:1fr}.hq-btn,.hq-btn2{width:100%}}
+@media(max-width:640px){.hq{padding:18px}.hq h3{font-size:1.28rem}.hq-grid{grid-template-columns:repeat(3,1fr);gap:7px}.hq-stat{min-height:66px;padding:10px 5px}.hq-stat b{font-size:1.18rem}.hq-stat span{font-size:.6rem}.hq-feat{grid-template-columns:1fr}.hq-cta{flex-direction:column}.hq-btn,.hq-btn2{width:100%}}
 .ub{background:linear-gradient(135deg,#1a1f10,#182010);border:1px solid rgba(251,191,36,.25);border-radius:var(--r2);padding:20px;margin-bottom:20px}.ub h3{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--warn);margin-bottom:6px}.ub p{font-size:.88rem;color:var(--t2);line-height:1.55}.ub ul{list-style:none;margin-top:10px}.ub ul li{font-size:.85rem;color:var(--t2);padding:3px 0 3px 18px;position:relative}.ub ul li::before{content:'\2713';position:absolute;left:0;color:var(--warn);font-weight:700;font-size:.8rem}
 .prof{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:20px;margin-bottom:24px}.prof h3{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
 .ret{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--brd)}.bret{background:var(--bg2);border:1px solid var(--brd);color:var(--t2);padding:10px 24px;border-radius:var(--r);font-weight:600;cursor:pointer;font-family:var(--f);font-size:.88rem;transition:all var(--tr)}.bret:hover{border-color:var(--brd-h);color:var(--t1)}
@@ -1010,8 +1011,7 @@ function renderResults(r){
       <div class="hq-grid">
         <div class="hq-stat"><b>100K+</b><span>New riders annually</span></div>
         <div class="hq-stat"><b>8</b><span>Product categories</span></div>
-        <div class="hq-stat"><b>$0</b><span>Cost to join</span></div>
-        <div class="hq-stat"><b>Trusted</b><span>Partners</span></div>
+        <div class="hq-stat"><b>24/7</b><span>Rider community</span></div>
       </div>
       <ul class="hq-feat">
         <li>Exclusive gear and insurance deals</li>
@@ -1020,8 +1020,8 @@ function renderResults(r){
         <li>Connect with riders near you</li>
       </ul>
       <div class="hq-cta">
-        <a class="hq-btn" href="https://www.riders-share.com/ridershq#join" target="_blank" rel="noopener" onclick="trackHQClick('join')">Join RidersHQ, it's free ${SVG.arrow}</a>
-        <a class="hq-btn2" href="https://www.riders-share.com/ridershq/forum" target="_blank" rel="noopener" onclick="trackHQClick('forum')">Visit community forum</a>
+        <a class="hq-btn" href="https://www.riders-share.com/ridershq#join" target="_blank" rel="noopener" onclick="trackHQClick('join')"><span>Join RidersHQ</span>${SVG.arrow}</a>
+        <a class="hq-btn2" href="https://www.riders-share.com/ridershq/forum" target="_blank" rel="noopener" onclick="trackHQClick('forum')"><span>Community forum</span></a>
       </div>
     </div>`;
   }
