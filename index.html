@@ -38,6 +38,28 @@ body::before{content:'';position:fixed;top:0;left:0;right:0;height:400px;backgro
 .rsp{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:16px}.spi{background:var(--bg2);padding:8px 10px;border-radius:6px;text-align:center}.spl{font-size:.7rem;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;font-weight:600}.spv{font-size:.9rem;font-weight:700;color:var(--t1);margin-top:1px}
 .wf{font-size:.82rem;color:var(--t3);line-height:1.5;padding:10px 12px;background:var(--bg2);border-radius:6px;border-left:3px solid var(--warn)}.wf strong{color:var(--warn);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:2px}
 .cta{background:linear-gradient(135deg,#162040,#1a2540);border:1px solid var(--brd-s);border-radius:var(--r2);padding:24px;text-align:center;margin:24px 0}.cta h3{font-family:var(--fd);font-size:1.2rem;font-weight:700;margin-bottom:6px}.cta p{font-size:.88rem;color:var(--t2);margin-bottom:14px;line-height:1.5}.cta a{display:inline-flex;align-items:center;gap:8px;background:var(--ac);color:#fff;padding:12px 28px;border-radius:var(--r);font-weight:700;text-decoration:none;font-size:.92rem;transition:all var(--tr)}.cta a:hover{background:var(--ac2);box-shadow:0 4px 20px var(--glow2)}
+.hq{position:relative;overflow:hidden;background:linear-gradient(135deg,#0d1a33 0%,#122647 55%,#0e1b30 100%);border:1px solid rgba(59,125,221,.45);border-radius:var(--r2);padding:22px;margin-bottom:20px;box-shadow:0 0 0 1px rgba(59,125,221,.08),0 8px 28px rgba(0,0,0,.35)}
+.hq::before{content:'';position:absolute;top:-60px;right:-60px;width:190px;height:190px;background:radial-gradient(circle,var(--glow2),transparent 70%);pointer-events:none}
+.hq-tag{display:inline-flex;align-items:center;gap:6px;background:var(--ac);color:#fff;font-family:var(--fd);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border-radius:100px;margin-bottom:11px}
+.hq-free{display:inline-block;background:rgba(52,211,153,.14);border:1px solid rgba(52,211,153,.45);color:var(--ok);font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:100px;margin-left:7px;vertical-align:middle}
+.hq h3{font-family:var(--fd);font-size:1.6rem;font-weight:700;color:#fff;line-height:1.12;margin-bottom:8px;letter-spacing:.01em;position:relative}
+.hq .hq-sub{font-size:.9rem;color:#c5cfe0;line-height:1.6;margin-bottom:15px;position:relative;max-width:62ch}
+.hq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:16px;position:relative}
+.hq-stat{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:11px 9px;text-align:center}
+.hq-stat b{display:block;font-family:var(--fd);font-size:1.32rem;font-weight:700;color:var(--ac2);line-height:1.1}
+.hq-stat span{display:block;font-size:.66rem;color:var(--t2);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;line-height:1.3}
+.hq-feat{list-style:none;margin-bottom:17px;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+.hq-feat li{font-size:.85rem;color:#c5cfe0;padding:3px 0 3px 21px;position:relative;line-height:1.45}
+.hq-feat li::before{content:'\2713';position:absolute;left:0;top:3px;color:var(--ok);font-weight:700;font-size:.8rem}
+.hq-cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;position:relative}
+.hq-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--ac);color:#fff;font-family:var(--fd);font-size:.95rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;padding:12px 22px;border-radius:var(--r);transition:.18s;border:1px solid var(--ac)}
+.hq-btn:hover{background:var(--ac2);border-color:var(--ac2);transform:translateY(-1px);box-shadow:0 6px 18px var(--glow2)}
+.hq-btn2{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:transparent;color:var(--ac2);font-family:var(--fd);font-size:.95rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;padding:12px 20px;border-radius:var(--r);border:1px solid rgba(59,125,221,.5);transition:.18s}
+.hq-btn2:hover{background:rgba(59,125,221,.12);border-color:var(--ac2);color:#fff}
+.hq-join{font-size:.78rem;color:var(--t2);margin-top:11px;position:relative;display:flex;align-items:center;gap:7px}
+.hq-dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 3px rgba(52,211,153,.18);flex:none}
+.hq-join b{color:var(--ok);font-weight:700}
+@media(max-width:640px){.hq{padding:18px}.hq h3{font-size:1.32rem}.hq-grid{grid-template-columns:repeat(2,1fr)}.hq-feat{grid-template-columns:1fr}.hq-btn,.hq-btn2{width:100%}}
 .ub{background:linear-gradient(135deg,#1a1f10,#182010);border:1px solid rgba(251,191,36,.25);border-radius:var(--r2);padding:20px;margin-bottom:20px}.ub h3{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--warn);margin-bottom:6px}.ub p{font-size:.88rem;color:var(--t2);line-height:1.55}.ub ul{list-style:none;margin-top:10px}.ub ul li{font-size:.85rem;color:var(--t2);padding:3px 0 3px 18px;position:relative}.ub ul li::before{content:'\2713';position:absolute;left:0;color:var(--warn);font-weight:700;font-size:.8rem}
 .prof{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);padding:20px;margin-bottom:24px}.prof h3{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}.tags{display:flex;flex-wrap:wrap;gap:6px}.tag{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg2);color:var(--t2);border:1px solid var(--brd)}
 .ret{text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--brd)}.bret{background:var(--bg2);border:1px solid var(--brd);color:var(--t2);padding:10px 24px;border-radius:var(--r);font-weight:600;cursor:pointer;font-family:var(--f);font-size:.88rem;transition:all var(--tr)}.bret:hover{border-color:var(--brd-h);color:var(--t1)}
@@ -69,23 +91,22 @@ const QS=[
 {id:2,sec:"Riding Experience & Skill",num:"Q2",text:"Highest displacement ridden with confidence for 30+ minutes?",note:"Cross-referenced with Q1 to validate experience.",multi:false,opts:[{l:"A",n:"None / under 250cc",v:"under250"},{l:"B",n:"250-400cc",v:"250-400"},{l:"C",n:"401-650cc",v:"401-650"},{l:"D",n:"651-900cc",v:"651-900"},{l:"E",n:"901cc+",v:"901+"}]},
 {id:3,sec:"Riding Experience & Skill",num:"Q3",text:"What are you looking for in your next bike?",note:"Helps us target the right displacement range for you.",multi:false,opts:[{l:"A",n:"My first motorcycle",d:"No current bike to compare to",v:"first"},{l:"B",n:"Something similar to what I ride now",d:"Happy with my current displacement range",v:"similar"},{l:"C",n:"Ready to step up in power",d:"Want more displacement than my current bike",v:"stepup"},{l:"D",n:"Significant upgrade",d:"Ready for a major jump in performance",v:"bigupgrade"}]},
 {id:4,sec:"Riding Experience & Skill",num:"Q4",text:"Formal motorcycle training or licensing?",multi:false,opts:[{l:"A",n:"No training or license yet",v:"none"},{l:"B",n:"Beginner Safety Course",d:"Class M obtained",v:"basic"},{l:"C",n:"Beginner Safety Course + additional courses",d:"Advanced, track instruction",v:"advanced-training"},{l:"D",n:"Extensive",d:"Cornering schools, off-road, racing license",v:"extensive"}]},
-{id:5,sec:"Riding Environment & Use Case",num:"Q5",text:"PRIMARY use for this motorcycle?",note:"Select the single most important use case.",multi:false,opts:[{l:"A",n:"Daily commuting",d:"City/suburban, under 30 mi round-trip",v:"commute"},{l:"B",n:"Weekend recreation",d:"Twisties, day trips, canyon carving",v:"recreation"},{l:"C",n:"Long-distance touring",d:"Multi-day, 200+ mi/day, two-up",v:"touring"},{l:"D",n:"Mixed-surface adventure",d:"Paved + gravel/dirt/fire roads",v:"adventure"},{l:"E",n:"Track days or spirited sport riding",v:"track"},{l:"F",n:"Casual cruising and short social rides",v:"casual"}]},
-{id:6,sec:"Riding Environment & Use Case",num:"Q6",text:"Paved vs. unpaved riding split?",multi:false,opts:[{l:"A",n:"100% paved",v:"paved"},{l:"B",n:"90/10 paved/dirt",v:"90-10"},{l:"C",n:"70/30 paved/dirt",v:"70-30"},{l:"D",n:"50/50 mixed",v:"50-50"},{l:"E",n:"Primarily off-road",v:"offroad"}]},
-{id:7,sec:"Riding Environment & Use Case",num:"Q7",text:"Longest single-day ride you expect regularly?",multi:false,opts:[{l:"A",n:"Under 50 miles",v:"under50"},{l:"B",n:"50-100 miles",v:"50-100"},{l:"C",n:"100-250 miles",v:"100-250"},{l:"D",n:"250-500 miles",v:"250-500"},{l:"E",n:"500+ miles",d:"Iron Butt territory",v:"500+"}]},
-{id:8,sec:"Riding Environment & Use Case",num:"Q8",text:"Will you regularly carry a passenger?",multi:false,opts:[{l:"A",n:"Never or almost never",v:"never"},{l:"B",n:"Occasionally",d:"Few times per season",v:"occasionally"},{l:"C",n:"Frequently",d:"Most weekends",v:"frequently"},{l:"D",n:"Primary requirement",d:"Partner rides with me",v:"primary"}]},
+{id:5,sec:"Riding Environment & Use Case",num:"Q5",text:"PRIMARY use for this motorcycle?",note:"Select the single most important use case.",multi:false,opts:[{l:"A",n:"Daily commuting",d:"City/suburban, under 30 mi round-trip",v:"commute"},{l:"B",n:"Weekend recreation",d:"Twisties, day trips, canyon carving",v:"recreation"},{l:"C",n:"Long-distance touring",d:"Multi-day, 200+ mi/day, two-up",v:"touring"},{l:"D",n:"Mixed-surface adventure",d:"Paved + gravel/dirt/fire roads",v:"adventure"},{l:"E",n:"Track days or spirited sport riding",v:"track"}]},
+{id:6,sec:"Riding Environment & Use Case",num:"Q6",text:"Paved vs. unpaved riding split?",multi:false,opts:[{l:"A",n:"All paved",d:"Streets, highways, and backroads only",v:"paved"},{l:"B",n:"Mostly paved with some dirt",d:"Occasional gravel or fire roads",v:"90-10"},{l:"C",n:"Even mix or mostly off-road",d:"Regular dirt, gravel, and trails",v:"offroad"}]},
+{id:7,sec:"Riding Environment & Use Case",num:"Q7",text:"Longest single-day ride you expect regularly?",multi:false,opts:[{l:"A",n:"Under 100 miles",d:"Short local rides and commutes",v:"under100"},{l:"B",n:"100-250 miles",d:"Full day out and back",v:"100-250"},{l:"C",n:"250+ miles",d:"All-day and multi-day distance",v:"250+"}]},
+{id:8,sec:"Riding Environment & Use Case",num:"Q8",text:"Will you regularly carry a passenger?",multi:false,opts:[{l:"A",n:"Never",d:"Riding solo",v:"never"},{l:"B",n:"Occasionally",d:"Few times per season",v:"occasionally"},{l:"C",n:"Frequently",d:"Most weekends",v:"frequently"},{l:"D",n:"Primary requirement",d:"Partner rides with me",v:"primary"}]},
 {id:9,sec:"Physical Fit & Ergonomics",num:"Q9",text:"Your height?",multi:false,opts:[{l:"A",n:"Under 5'4\"",v:"under54"},{l:"B",n:"5'4\" - 5'7\"",v:"54-57"},{l:"C",n:"5'8\" - 5'11\"",v:"58-511"},{l:"D",n:"6'0\" - 6'3\"",v:"60-63"},{l:"E",n:"6'4\"+",v:"64+"}]},
-{id:10,sec:"Physical Fit & Ergonomics",num:"Q10",text:"Approximate inseam?",note:"Filters seat height compatibility.",multi:false,opts:[{l:"A",n:"Under 28\"",v:"under28"},{l:"B",n:"28-30\"",v:"28-30"},{l:"C",n:"31-33\"",v:"31-33"},{l:"D",n:"34-36\"",v:"34-36"},{l:"E",n:"37\"+",v:"37+"}]},
+{id:10,sec:"Physical Fit & Ergonomics",num:"Q10",text:"Approximate inseam?",note:"Filters seat height compatibility.",multi:false,opts:[{l:"A",n:"Under 28\"",v:"under28"},{l:"B",n:"28-30\"",v:"28-30"},{l:"C",n:"31-33\"",v:"31-33"},{l:"D",n:"34-36\"",v:"34-36"},{l:"E",n:"37\"+",v:"37+"},{l:"F",n:"I don't know",d:"We will estimate from your height",v:"unknown"}]},
 {id:11,sec:"Physical Fit & Ergonomics",num:"Q11",text:"Most comfortable riding position?",multi:false,opts:[{l:"A",n:"Feet forward, reclined",v:"cruiser"},{l:"B",n:"Upright, neutral",v:"standard"},{l:"C",n:"Slightly forward lean",v:"sport"},{l:"D",n:"Upright, tall commanding view",v:"adv-touring"},{l:"E",n:"No preference / not sure",v:"any"}]},
 {id:12,sec:"Budget & Ownership",num:"Q12",text:"Total budget for motorcycle purchase (not including gear)?",multi:false,opts:[{l:"A",n:"Under $5,000",v:"under5k"},{l:"B",n:"$5,000 - $8,000",v:"5-8k"},{l:"C",n:"$8,000 - $12,000",v:"8-12k"},{l:"D",n:"$12,000 - $18,000",v:"12-18k"},{l:"E",n:"$18,000 - $25,000",v:"18-25k"},{l:"F",n:"$25,000+",v:"25k+"}]},
 {id:13,sec:"Budget & Ownership",num:"Q13",text:"Open to buying used?",multi:false,opts:[{l:"A",n:"Yes, absolutely",d:"Best value",v:"yes"},{l:"B",n:"Open if right condition",v:"open"},{l:"C",n:"Prefer new but would consider",v:"prefer-new"},{l:"D",n:"No, I want new with warranty",v:"new-only"}]},
-{id:14,sec:"Budget & Ownership",num:"Q14",text:"Ongoing maintenance costs and complexity?",multi:false,opts:[{l:"A",n:"Lowest possible",d:"Shaft drive, Honda/Yamaha",v:"lowest"},{l:"B",n:"Comfortable with moderate",d:"Chain/belt, standard intervals",v:"moderate"},{l:"C",n:"Mechanically inclined",d:"Enjoy working on my bike",v:"diy"},{l:"D",n:"Dealer handles everything",v:"dealer"}]},
+{id:14,sec:"Budget & Ownership",num:"Q14",text:"Ongoing maintenance costs and complexity?",multi:false,opts:[{l:"A",n:"Lowest possible",d:"Shaft or belt drive, minimal upkeep",v:"lowest"},{l:"B",n:"Comfortable doing my own maintenance",d:"Chain adjustment, standard service intervals, basic wrenching",v:"moderate"},{l:"C",n:"Dealer handles everything",v:"dealer"}]},
 {id:15,sec:"Style & Priorities",num:"Q15",text:"What do you want most from your motorcycle?",note:"Select up to two.",multi:true,maxSel:2,opts:[{l:"A",n:"Maximum comfort for long rides",v:"comfort"},{l:"B",n:"Lightweight agility, sharp handling",v:"agility"},{l:"C",n:"Raw power and acceleration",v:"power"},{l:"D",n:"Visual style and brand identity",v:"style"},{l:"E",n:"Versatility",d:"One bike does everything",v:"versatile"},{l:"F",n:"Simplicity and reliability",v:"reliable"}]},
 {id:16,sec:"Style & Priorities",num:"Q16",text:"How important are electronic rider aids?",multi:false,opts:[{l:"A",n:"Essential",d:"Cornering ABS, TC, ride modes, e-suspension",v:"essential"},{l:"B",n:"Important",d:"ABS + TC must-have; modes appreciated",v:"important"},{l:"C",n:"Moderate",d:"ABS important; advanced unnecessary",v:"moderate"},{l:"D",n:"Not important",d:"Prefer simple, analog",v:"minimal"}]},
 {id:17,sec:"Style & Priorities",num:"Q17",text:"Engine character that appeals most?",multi:false,opts:[{l:"A",n:"Low-end torque, deep exhaust",d:"V-twin / big single",v:"torque"},{l:"B",n:"Smooth, linear, predictable",d:"Parallel-twin / small cc",v:"smooth"},{l:"C",n:"High-revving excitement",d:"Inline-four",v:"revvy"},{l:"D",n:"Best of both worlds",d:"Triple / crossplane twin",v:"triple"},{l:"E",n:"Not sure yet",v:"unsure"}]},
 {id:18,sec:"Style & Priorities",num:"Q18",text:"Any brand preference or loyalty?",note:"Select up to 3, or skip if no preference.",multi:true,maxSel:3,opts:[{l:"A",n:"Harley-Davidson",v:"harley"},{l:"B",n:"Indian",v:"indian"},{l:"C",n:"Honda",v:"honda"},{l:"D",n:"Yamaha",v:"yamaha"},{l:"E",n:"Kawasaki",v:"kawasaki"},{l:"F",n:"Suzuki",v:"suzuki"},{l:"G",n:"BMW",v:"bmw"},{l:"H",n:"Ducati",v:"ducati"},{l:"I",n:"Triumph",v:"triumph"},{l:"J",n:"KTM / Husqvarna",v:"ktm"},{l:"K",n:"Aprilia",v:"aprilia"},{l:"L",n:"Royal Enfield",v:"royalenfield"},{l:"M",n:"No preference",v:"any"}]},
-{id:19,sec:"Advanced Factors",num:"Q19",text:"Weight comfortable managing at low speeds?",multi:false,opts:[{l:"A",n:"Under 400 lbs",v:"under400"},{l:"B",n:"400-500 lbs",v:"400-500"},{l:"C",n:"500-600 lbs",v:"500-600"},{l:"D",n:"600+ lbs",v:"600+"},{l:"E",n:"Not sure",v:"unsure"}]},
 {id:20,sec:"Advanced Factors",num:"Q20",text:"Aftermarket and customization importance?",multi:false,opts:[{l:"A",n:"Very important",d:"Exhaust, suspension, aesthetics",v:"very"},{l:"B",n:"Somewhat",d:"Luggage, windscreen, comfort",v:"somewhat"},{l:"C",n:"Not important",d:"Great out of the box",v:"none"}]},
-{id:21,sec:"Advanced Factors",num:"Q21",text:"Climate where you ride most?",multi:false,opts:[{l:"A",n:"Four-season, cold winters",d:"40-60F riding",v:"four-season"},{l:"B",n:"Year-round warm",d:"Rarely below 50F",v:"warm"},{l:"C",n:"Extreme heat",d:"100F+ summers",v:"hot"},{l:"D",n:"Frequent rain / wet",v:"wet"}]},
+{id:21,sec:"Advanced Factors",num:"Q21",text:"What would make you regret a bike six months from now?",note:"Your biggest deal breaker carries extra weight in the final ranking.",multi:false,opts:[{l:"A",n:"Outgrowing it too quickly",d:"Not enough power or capability after the first season",v:"outgrow"},{l:"B",n:"Feeling intimidated by it",d:"Too much bike, too heavy, or nervous to ride it",v:"intimidated"},{l:"C",n:"Unexpected repair and upkeep costs",d:"Expensive service intervals or hard to find parts",v:"upkeep"},{l:"D",n:"Being uncomfortable on longer rides",d:"Cramped ergonomics, wind blast, or a punishing seat",v:"discomfort"}]},
 {id:22,sec:"Advanced Factors",num:"Q22",text:"What type of motorcycle interests you most?",note:"Select up to 2.",multi:true,maxSel:2,opts:[{l:"A",n:"Cruiser",d:"Relaxed, low-slung, open road",v:"cruiser"},{l:"B",n:"Standard / Naked",d:"Upright, versatile, everyday",v:"standard"},{l:"C",n:"Sport / Sportbike",d:"Performance, track, speed",v:"sport"},{l:"D",n:"Adventure / Dual-Sport",d:"Mixed terrain, exploration",v:"adventure"},{l:"E",n:"Touring / Sport-Touring",d:"Long distance, comfort, luggage",v:"touring"},{l:"F",n:"Not sure yet",v:"unsure"}]}
 ];
 
@@ -105,11 +126,12 @@ function getExp(a){
 
 function getCat(a){
   const sc={cruiser:0,standard:0,sport:0,adventure:0,touring:0};
-  const m4={commute:{standard:3},recreation:{sport:2,standard:2},touring:{touring:3},adventure:{adventure:3},track:{sport:3},casual:{cruiser:3}};
+  const m4={commute:{standard:3},recreation:{sport:2,standard:2,cruiser:1},touring:{touring:3},adventure:{adventure:3},track:{sport:3}};
   Object.entries(m4[a[5]]||{}).forEach(([k,v])=>sc[k]+=v);
-  if(['70-30','50-50','offroad'].includes(a[6]))sc.adventure+=3;
-  else if(a[6]==='90-10')sc.adventure+=1;
-  if(['250-500','500+'].includes(a[7])){sc.touring+=3;sc.cruiser+=1;}
+  if(a[6]==='offroad')sc.adventure+=3;
+  else if(a[6]==='90-10')sc.adventure+=2;
+  if(a[7]==='250+'){sc.touring+=3;sc.cruiser+=1;}
+  else if(a[7]==='100-250'){sc.touring+=1;}
   if(['frequently','primary'].includes(a[8])){sc.touring+=2;sc.cruiser+=1;}
   // Q11 riding position
   const pm={cruiser:{cruiser:3},standard:{standard:3},sport:{sport:3},'adv-touring':{adventure:2,touring:2}};
@@ -281,12 +303,12 @@ function scoreBike(bike,a){
     }
   }
 
-  // Engine character (Q16)
+  // Engine character (Q17)
   if(matchEngine(bike,a))s+=2;
 
-  // Maintenance preference (Q13)
+  // Maintenance preference (Q14)
   if(a[14]==='lowest'&&['honda','yamaha','suzuki','kawasaki'].includes(bike.brand))s+=1;
-  if(a[14]==='diy'&&['harley','ducati','ktm','buell','victory'].includes(bike.brand))s+=1;
+  if(a[14]==='moderate'&&['harley','ducati','ktm','buell','victory'].includes(bike.brand))s+=1;
   if(a[14]==='dealer'&&['bmw','ducati','ktm','aprilia'].includes(bike.brand))s+=1;
 
   // Experience level match bonus (Q1/Q2/Q3 combined via getExp)
@@ -302,12 +324,14 @@ function scoreBike(bike,a){
   else if(ccDiff===1)s+=1;
   else if(ccDiff>=3)s-=2;
 
-  // Seat height vs inseam (Q9) - new bikes only (we have seat data)
+  // Seat height vs inseam (Q10) - new bikes only (we have seat data)
   if(bike.isNew&&bike.seat){
     const seatH=parseFloat(bike.seat);
     if(!isNaN(seatH)){
       const inseamMap={under28:27,'28-30':29,'31-33':32,'34-36':35,'37+':38};
-      const inseam=inseamMap[a[10]]||32;
+      // If inseam unknown, estimate it from the height answer (Q9)
+      const heightInseamMap={under54:27,'54-57':29,'58-511':32,'60-63':34,'64+':36};
+      const inseam=inseamMap[a[10]]||heightInseamMap[a[9]]||32;
       if(inseam<29&&seatH>31.5)s-=2;
       else if(inseam<29&&seatH<=28)s+=2;
       else if(inseam>=35&&seatH<30)s-=1;
@@ -316,7 +340,7 @@ function scoreBike(bike,a){
     }
   }
 
-  // Height preference (Q8) - penalize heavy/tall ADV for short riders, small bikes for tall
+  // Height preference (Q9) - penalize heavy/tall ADV for short riders, small bikes for tall
   const htMap={under54:0,'54-57':1,'58-511':2,'60-63':3,'64+':4};
   const ht=htMap[a[9]]||2;
   if(ht<=1){
@@ -336,30 +360,35 @@ function scoreBike(bike,a){
     if(bike.cat==='adventure'||bike.cat==='touring')s+=1;
   }
 
-  // Weight comfort (Q18)
+  // Weight comfort (derived from Q1/Q2/Q4 + Q9)
   if(bike.isNew&&bike.weight){
     const wt=parseInt(bike.weight.replace(/[^0-9]/g,''));
     if(!isNaN(wt)){
-      const wtPref=a[19];
-      if(wtPref==='under400'){
+      // Weight tolerance is inferred from experience level (Q1/Q2/Q4) and height (Q9)
+      // rather than asked directly, since new riders rarely know their own limit.
+      const expIdx=EL.indexOf(userExp);
+      const htIdxW={under54:0,'54-57':1,'58-511':2,'60-63':3,'64+':4}[a[9]];
+      const htW=(htIdxW===undefined)?2:htIdxW;
+      if(expIdx<=0){
+        // Beginner: strongly favor manageable weight
         if(wt<=400)s+=2;
+        else if(wt>600)s-=3;
         else if(wt>500)s-=2;
-        else if(wt>450)s-=1;
-      }else if(wtPref==='400-500'){
-        if(wt>=350&&wt<=520)s+=1;
-        else if(wt>600)s-=2;
-      }else if(wtPref==='500-600'){
-        if(wt>=450&&wt<=620)s+=1;
-        else if(wt<350)s-=1;
-      }else if(wtPref==='600+'){
+      }else if(expIdx===1){
+        if(wt<=450)s+=1;
+        else if(wt>650)s-=2;
+        else if(wt>550)s-=1;
+      }else if(expIdx>=3){
+        // Experienced riders handle heavy bikes comfortably
         if(wt>=550)s+=1;
-        else if(wt<400)s-=1;
       }
-      // 'unsure' gets no weight modifier
+      // Short riders struggle more with top-heavy machines regardless of experience
+      if(htW<=1&&wt>600)s-=2;
+      else if(htW<=1&&wt>500)s-=1;
     }
   }
 
-  // Electronics preference (Q15)
+  // Electronics preference (Q16)
   const elecPref=a[16];
   const premiumBrands=['bmw','ducati','ktm','aprilia'];
   const basicBrands=['royalenfield','suzuki'];
@@ -373,26 +402,56 @@ function scoreBike(bike,a){
     if(bike.bestFor&&/simple|analog|classic|retro|basic/i.test(bike.bestFor))s+=1;
   }
 
-  // Aftermarket importance (Q19)
+  // Aftermarket importance (Q20)
   if(a[20]==='very'){
     if(['harley','honda','yamaha','kawasaki'].includes(bike.brand))s+=1;
     if(bike.whyBuy&&/aftermarket|customize|community/i.test(bike.whyBuy))s+=1;
     if(bike.bestFor&&/aftermarket/i.test(bike.bestFor))s+=1;
   }
 
-  // Climate (Q20)
-  if(a[21]==='wet'){
-    // Favor ABS, fuel injection, shaft/belt drive in wet
-    if(bike.bestFor&&/ABS|traction/i.test(bike.bestFor))s+=1;
-    if(bike.whyBuy&&/shaft drive|belt drive/i.test(bike.whyBuy))s+=1;
-  }else if(a[21]==='hot'){
-    // Favor liquid-cooled in extreme heat
-    if(bike.bestFor&&/liquid.cool/i.test(bike.bestFor))s+=1;
-    if(bike.whyBuy&&/liquid.cool/i.test(bike.whyBuy))s+=1;
+  // Deal breaker (Q21) - tiebreaker weight, capped so it cannot override
+  // category match, budget, or physical fit. Primary axis maxes at +/-2,
+  // stacked modifiers max at +1 each.
+  const dealBreaker=a[21];
+  const bikeCC2=parseCCFromEngine(bike.engine);
+  const bikeExpIdx=EL.indexOf(bike.expLevel);
+  const userExpIdx2=EL.indexOf(userExp);
+  if(dealBreaker==='outgrow'){
+    // Favor the upper end of what they can safely handle.
+    // Safety gate above already caps the ceiling, so no extra step-up bonus.
+    if(bikeExpIdx>=userExpIdx2)s+=2;
+    if(bikeCC2>0&&bikeCC2<300)s-=2;
+    if(bike.bestFor&&/versatil|all.round|step.up|more power/i.test(bike.bestFor))s+=1;
+  }else if(dealBreaker==='intimidated'){
+    // Favor forgiving, lighter, lower bikes.
+    // Reduced from +/-3 to avoid double-counting the experience match bonus.
+    if(bikeExpIdx<=userExpIdx2)s+=2;
+    if(bikeExpIdx>userExpIdx2)s-=2;
+    if(bike.isNew&&bike.weight){
+      const w2=parseInt(bike.weight.replace(/[^0-9]/g,''));
+      if(!isNaN(w2)&&w2<=420)s+=1;
+      if(!isNaN(w2)&&w2>600)s-=1;
+    }
+    if(bike.bestFor&&/forgiving|beginner|low seat|stall.free|E.Clutch|easy/i.test(bike.bestFor))s+=1;
+    if(bike.whyBuy&&/forgiving|beginner|simple|easy/i.test(bike.whyBuy))s+=1;
+  }else if(dealBreaker==='upkeep'){
+    // Favor proven reliability and cheap, available parts.
+    // Reduced so brand alone cannot hard-filter premium marques.
+    if(['honda','yamaha','suzuki','kawasaki'].includes(bike.brand))s+=2;
+    if(['ducati','bmw','ktm','aprilia','buell','victory'].includes(bike.brand))s-=2;
+    if(bike.bestFor&&/reliab|shaft|belt|value|simple/i.test(bike.bestFor))s+=1;
+    if(bike.whyBuy&&/reliab|bulletproof|cheap parts|simple|shaft drive|belt drive|parts everywhere/i.test(bike.whyBuy))s+=1;
+    if(bike.watchFor&&/desmo|valve service|parts scarce|parts sourcing|dealer service/i.test(bike.watchFor))s-=1;
+  }else if(dealBreaker==='discomfort'){
+    // Favor comfort-oriented ergonomics and wind protection
+    if(bike.cat==='touring'||bike.cat==='adventure')s+=2;
+    if(bike.cat==='sport')s-=2;
+    if(bike.bestFor&&/comfort|touring|ergonom|upright|luggage|wind/i.test(bike.bestFor))s+=1;
+    if(bike.whyBuy&&/comfort|touring|upright|practical/i.test(bike.whyBuy))s+=1;
   }
 
   // Paved vs unpaved (Q6) - bonus/penalty beyond category assignment
-  if(['50-50','offroad'].includes(a[6])){
+  if(a[6]==='offroad'){
     if(bike.cat!=='adventure')s-=2;
     if(bike.bestFor&&/off.road|trail|spoked|21/i.test(bike.bestFor))s+=2;
   }
@@ -402,7 +461,7 @@ function scoreBike(bike,a){
   }
 
   // Ride distance (Q7) - long distance rewards touring features
-  if(['250-500','500+'].includes(a[7])){
+  if(a[7]==='250+'){
     if(bike.bestFor&&/touring|comfort|cruise|luggage|shaft|DCT/i.test(bike.bestFor))s+=1;
     if(bike.whyBuy&&/touring|shaft drive|cruise/i.test(bike.whyBuy))s+=1;
   }
@@ -485,13 +544,13 @@ function renderLanding(){
   <div class="hdr">
     <div class="lr"><img src="https://images.prismic.io/riders-sharecom/aRyKgGGnmrmGp_Hh_logo_black_background_v2.png?auto=format,compress" alt="Riders Share""><span>Quiz</span></div>
     <h1>What Motorcycle <b>Should I Buy?</b></h1>
-    <p class="sub">22 expert questions. 214 motorcycles. Your perfect match.</p>
+    <p class="sub">21 expert questions. 214 motorcycles. Your perfect match.</p>
   </div>
   <div class="land">
     <div class="sr">
       <div class="si"><span class="sn">214</span><span class="sl">Motorcycles</span></div>
       <div class="si"><span class="sn">5</span><span class="sl">Categories</span></div>
-      <div class="si"><span class="sn">22</span><span class="sl">Questions</span></div>
+      <div class="si"><span class="sn">21</span><span class="sl">Questions</span></div>
       <div class="si"><span class="sn">145</span><span class="sl">Used Picks</span></div>
     </div>
     <div class="feats">
@@ -512,7 +571,7 @@ function renderQ(){
   const cur=S.ans[q.id];
   const curArr=Array.isArray(cur)?cur:cur?[cur]:[];
   const pct=((S.qi)/22*100).toFixed(0);
-  let h=`<div class="pw"><div class="pi"><span class="ps">${q.sec}</span><span class="pc">${S.qi+1} of 22</span></div><div class="pb"><div class="pf" style="width:${pct}%"></div></div></div>`;
+  let h=`<div class="pw"><div class="pi"><span class="ps">${q.sec}</span><span class="pc">${S.qi+1} of ${QS.length}</span></div><div class="pb"><div class="pf" style="width:${pct}%"></div></div></div>`;
   h+=`<div class="qcard"><div class="qn">${q.num}</div><div class="qt">${q.text}</div>`;
   if(q.note)h+=`<div class="qnote">${q.note}</div>`;
   else h+=`<div style="margin-bottom:16px"></div>`;
@@ -649,8 +708,9 @@ function newSid(){
   return 'q'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
 }
 
-function trackResults(r,email){
+function trackResults(r,email,meta){
   if(!WEBHOOK_URL) return;
+  meta = meta || {};
   var d={
     event: 'complete',
     sessionId: S.sid,
@@ -662,9 +722,20 @@ function trackResults(r,email){
     usedPick: r.results[2]?r.results[2].name:'',
     usedPath: r.usedPath?'Yes':'No',
     email: email||'',
+    emailQuality: meta.emailQuality||'',
+    emailScore: (meta.emailScore!=null?meta.emailScore:''),
+    emailFlag: meta.emailFlag||'',
+    marketingOptIn: meta.marketingOptIn?'Yes':'No',
     loggedIn: S.loggedIn||''
   };
   var p=new URLSearchParams(d);
+  var img=new Image();
+  img.src=WEBHOOK_URL+'?'+p.toString();
+}
+
+function trackHQClick(target){
+  if(!WEBHOOK_URL||!S.sid) return;
+  var p=new URLSearchParams({event:'ridershq_click',target:target||'join',sessionId:S.sid,exp:(S.res&&S.res.exp)||''});
   var img=new Image();
   img.src=WEBHOOK_URL+'?'+p.toString();
 }
@@ -689,54 +760,237 @@ function finish(){
   renderEmailGate();
 }
 
-function renderEmailGate(){
-  app.innerHTML=`
+// Known disposable and throwaway domains. Extend freely.
+var DISPOSABLE_DOMAINS = [
+  'mailinator.com','guerrillamail.com','10minutemail.com','tempmail.com',
+  'temp-mail.org','throwawaymail.com','yopmail.com','trashmail.com',
+  'sharklasers.com','getnada.com','maildrop.cc','dispostable.com',
+  'fakeinbox.com','mailnesia.com','spamgourmet.com','mytrashmail.com',
+  'tempinbox.com','emailondeck.com','moakt.com','tempr.email',
+  'discard.email','mailcatch.com','inboxbear.com','burnermail.io'
+];
+
+// Common free consumer providers. Valid, just lower commercial intent.
+var FREE_DOMAINS = [
+  'gmail.com','yahoo.com','hotmail.com','outlook.com','aol.com',
+  'icloud.com','me.com','live.com','msn.com','protonmail.com',
+  'proton.me','gmx.com','mail.com','zoho.com','yandex.com'
+];
+
+// Frequent typos mapped to their intended domain.
+var DOMAIN_TYPOS = {
+  'gmial.com':'gmail.com','gmai.com':'gmail.com','gmail.co':'gmail.com',
+  'gmail.con':'gmail.com','gmaill.com':'gmail.com','gnail.com':'gmail.com',
+  'yaho.com':'yahoo.com','yahooo.com':'yahoo.com','yahoo.co':'yahoo.com',
+  'hotmai.com':'hotmail.com','hotmial.com':'hotmail.com','hotmail.co':'hotmail.com',
+  'outlok.com':'outlook.com','outloook.com':'outlook.com','iclod.com':'icloud.com',
+  'icloud.co':'icloud.com','aol.co':'aol.com'
+};
+
+// Obvious junk local parts.
+var JUNK_LOCALS = [
+  'test','testing','asdf','asdfasdf','qwerty','abc','abcd','aaa','aaaa',
+  'none','no','nope','na','nothing','fake','fakeemail','notreal','x','xx','xxx',
+  'a','b','ab','email','myemail','youremail','example','sample','user',
+  'anonymous','anon','nobody','whatever','idk','dontcare','donotemail',
+  'unsubscribe','spam','junk','trash','noreply','no-reply'
+];
+
+var STRUCTURAL_EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+
+// ------------------------------------------------------------
+// scoreEmail(value)
+// Returns { valid, score, tier, reason, suggestion }
+// score: 0-100 likelihood the address is a real, reachable inbox
+// tier:  'invalid' | 'junk' | 'disposable' | 'low' | 'free' | 'business'
+// Only tier 'invalid' blocks submission. Everything else passes through
+// and is recorded so the list can be segmented later.
+// ------------------------------------------------------------
+function scoreEmail(raw) {
+  var v = (raw || '').trim().toLowerCase();
+
+  if (!v) {
+    return { valid:false, score:0, tier:'invalid', reason:'empty', suggestion:null };
+  }
+  if (!STRUCTURAL_EMAIL_RE.test(v)) {
+    return { valid:false, score:0, tier:'invalid', reason:'malformed', suggestion:null };
+  }
+
+  var parts = v.split('@');
+  var local = parts[0];
+  var domain = parts[1];
+  var tld = domain.split('.').pop();
+
+  // Hard structural rejections. These are not deliverable at all.
+  if (local.length < 1 || local.length > 64) {
+    return { valid:false, score:0, tier:'invalid', reason:'local-length', suggestion:null };
+  }
+  if (domain.length > 255 || domain.indexOf('..') !== -1 || local.indexOf('..') !== -1) {
+    return { valid:false, score:0, tier:'invalid', reason:'malformed-domain', suggestion:null };
+  }
+  if (/^[.\-]|[.\-]$/.test(local) || /^[.\-]|[.\-]$/.test(domain)) {
+    return { valid:false, score:0, tier:'invalid', reason:'edge-punctuation', suggestion:null };
+  }
+  if (tld.length < 2 || /[^a-z]/.test(tld)) {
+    return { valid:false, score:0, tier:'invalid', reason:'bad-tld', suggestion:null };
+  }
+
+  // Typo correction offer. Still valid, but prompt once before accepting.
+  if (DOMAIN_TYPOS[domain]) {
+    return {
+      valid: true, score: 35, tier: 'low', reason: 'likely-typo',
+      suggestion: local + '@' + DOMAIN_TYPOS[domain]
+    };
+  }
+
+  var score = 70;
+  var tier = 'free';
+  var reason = 'ok';
+
+  // Disposable domain. Accept, flag, do not mail.
+  if (DISPOSABLE_DOMAINS.indexOf(domain) !== -1) {
+    return { valid:true, score:10, tier:'disposable', reason:'disposable-domain', suggestion:null };
+  }
+
+  // Junk local part.
+  var strippedLocal = local.replace(/[._\-+0-9]/g, '');
+  if (JUNK_LOCALS.indexOf(local) !== -1 || JUNK_LOCALS.indexOf(strippedLocal) !== -1) {
+    return { valid:true, score:12, tier:'junk', reason:'junk-local', suggestion:null };
+  }
+
+  // Keyboard mashing: long run of consonants, or repeated single character.
+  if (/^(.)\1{2,}$/.test(local)) {
+    return { valid:true, score:12, tier:'junk', reason:'repeated-char', suggestion:null };
+  }
+  if (/[bcdfghjklmnpqrstvwxz]{6,}/.test(strippedLocal)) {
+    score -= 35; tier = 'junk'; reason = 'consonant-run';
+  }
+
+  // Very short local parts are usually placeholders.
+  if (local.length <= 2) { score -= 30; reason = 'very-short-local'; }
+  else if (local.length === 3) { score -= 12; }
+
+  // Mostly digits suggests generated input.
+  var digitCount = (local.match(/[0-9]/g) || []).length;
+  if (digitCount / local.length > 0.7) { score -= 25; reason = 'digit-heavy'; }
+
+  // Plus addressing is legitimate but often used for one-off signups.
+  if (local.indexOf('+') !== -1) { score -= 8; }
+
+  // Role accounts rarely convert on a consumer quiz.
+  if (/^(info|admin|support|sales|contact|help|billing|webmaster|postmaster)$/.test(strippedLocal)) {
+    score -= 20; reason = 'role-account';
+  }
+
+  // Domain classification.
+  if (FREE_DOMAINS.indexOf(domain) !== -1) {
+    score += 10;
+    tier = (tier === 'junk') ? 'junk' : 'free';
+  } else {
+    // Custom or business domain. Higher intent, but unverifiable client side.
+    score += 15;
+    tier = (tier === 'junk') ? 'junk' : 'business';
+  }
+
+  // Suspicious TLDs common in throwaway registration.
+  if (['tk','ml','ga','cf','gq','top','xyz','buzz'].indexOf(tld) !== -1) {
+    score -= 25; reason = 'suspicious-tld';
+  }
+
+  score = Math.max(0, Math.min(100, score));
+  if (score < 30 && tier !== 'junk') { tier = 'low'; }
+
+  return { valid:true, score:score, tier:tier, reason:reason, suggestion:null };
+}
+
+// ------------------------------------------------------------
+// Render
+// ------------------------------------------------------------
+function renderEmailGate() {
+  app.innerHTML = `
   <div class="qcard eg">
-    <div class="qn">Last Step (Optional)</div>
+    <div class="qn">Last Step</div>
     <div class="egt">Your Matches Are Ready</div>
-    <p class="egs">Before we show them, want in on rider-only perks? Add your email to join the Riders Share list. Optional, and your matches are on the next screen either way.</p>
+    <p class="egs">Enter your email and join the Riders Share list to unlock your full results. We will send your matches to your inbox so you have them saved.</p>
     <ul class="egp">
-      <li>Exclusive promotions and rental discounts</li>
-      <li>Try before you buy deals on the bikes you matched with</li>
-      <li>New listings, route guides, and rider tips</li>
+      <li>Your complete ranked motorcycle matches</li>
+      <li>Why each bike fits your answers</li>
+      <li>Try before you buy options on the bikes you matched with</li>
     </ul>
     <div class="egf">
-      <input type="email" id="egEmail" placeholder="you@example.com" autocomplete="email" inputmode="email">
+      <input type="email" id="egEmail" placeholder="you@example.com" autocomplete="email" inputmode="email" required>
       <label class="egc" for="egOptin">
         <input type="checkbox" id="egOptin">
-        <span>Yes, add me to the Riders Share email list. I agree to receive marketing emails about exclusive promotions, try before you buy deals, rental offers, and rider content. I can unsubscribe at any time using the link in any email. See the <a href="https://www.riders-share.com/privacy-policy" target="_blank" rel="noopener" style="color:var(--ac2)">Privacy Policy</a> for details on how Riders Share handles your information.</span>
+        <span><strong>Required to view your results.</strong> I agree to receive marketing emails from Riders Share about exclusive promotions, try before you buy deals, rental offers, and rider content. I can unsubscribe at any time using the link in any email. See the <a href="https://www.riders-share.com/privacy-policy" target="_blank" rel="noopener" style="color:var(--ac2)">Privacy Policy</a> for details on how Riders Share handles your information.</span>
       </label>
       <div class="ege" id="egErr"></div>
     </div>
     <div class="egb">
-      <button class="btn bn" style="justify-content:center" onclick="submitEmail()">${SVG.star} Sign Me Up and Show My Results</button>
-      <button class="egskip" onclick="skipEmail()">No thanks, just show my results</button>
+      <button class="btn bn" style="justify-content:center" onclick="submitEmail()">${SVG.star} Show My Results</button>
     </div>
-    <p class="egfine">Providing your email is optional. You will see your full results either way.</p>
+    <p class="egfine">We use your email to deliver your results and to send you Riders Share updates. Unsubscribe at any time.</p>
   </div>`;
-  window.scrollTo({top:0,behavior:'smooth'});
-  var i=document.getElementById('egEmail');
-  if(i)i.addEventListener('keydown',function(e){if(e.key==='Enter')submitEmail();});
+  window.scrollTo({ top:0, behavior:'smooth' });
+  var i = document.getElementById('egEmail');
+  if (i) i.addEventListener('keydown', function(e){ if (e.key === 'Enter') submitEmail(); });
 }
 
-function validEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);}
+// Backward-compatible boolean check.
+function validEmail(v) { return scoreEmail(v).valid; }
 
-function submitEmail(){
-  const val=(document.getElementById('egEmail').value||'').trim();
-  const optin=document.getElementById('egOptin').checked;
-  const err=document.getElementById('egErr');
-  if(!val){err.textContent='Enter an email address, or choose "No thanks" to skip.';return;}
-  if(!validEmail(val)){err.textContent='That email address does not look right. Check it and try again.';return;}
-  if(!optin){err.textContent='Check the consent box so we know it is okay to email you.';return;}
-  S.step='results';
-  trackResults(S.res,val);
+// Tracks whether the user already dismissed a typo suggestion.
+var _egTypoOffered = false;
+
+function submitEmail() {
+  var input = document.getElementById('egEmail');
+  var val = (input.value || '').trim();
+  var optin = document.getElementById('egOptin').checked;
+  var err = document.getElementById('egErr');
+  err.textContent = '';
+
+  var result = scoreEmail(val);
+
+  if (!result.valid) {
+    if (result.reason === 'empty') {
+      err.textContent = 'Enter your email address to see your matches.';
+    } else {
+      err.textContent = 'That email address does not look right. Check it and try again.';
+    }
+    input.focus();
+    return;
+  }
+
+  // Consent is required to view results. Every stored address is therefore
+  // an opt-in, which is what the Email List export relies on.
+  if (!optin) {
+    err.textContent = 'Check the box above to agree to emails and see your results.';
+    return;
+  }
+
+  // Offer the typo correction once, then accept whatever they submit.
+  if (result.suggestion && !_egTypoOffered) {
+    _egTypoOffered = true;
+    err.innerHTML = 'Did you mean <a href="#" onclick="acceptSuggestion(\'' +
+      result.suggestion + '\');return false;" style="color:var(--ac2)">' +
+      result.suggestion + '</a>? Press the button again to use what you typed.';
+    return;
+  }
+
+  S.step = 'results';
+  trackResults(S.res, val, {
+    emailQuality: result.tier,
+    emailScore: result.score,
+    emailFlag: result.reason,
+    marketingOptIn: optin
+  });
   renderResults(S.res);
 }
 
-function skipEmail(){
-  S.step='results';
-  trackResults(S.res,'');
-  renderResults(S.res);
+function acceptSuggestion(fixed) {
+  var input = document.getElementById('egEmail');
+  input.value = fixed;
+  document.getElementById('egErr').textContent = '';
+  _egTypoOffered = false;
 }
 
 function renderResults(r){
@@ -750,6 +1004,31 @@ function renderResults(r){
   h+=`<span class="tag">Budget: ${S.ans[12]||'Flexible'}</span>`;
   if(r.usedPath)h+=`<span class="tag" style="border-color:var(--warn);color:var(--warn)">Used Path Recommended</span>`;
   h+=`</div></div>`;
+  // RidersHQ Beginner Hub banner - beginner and beginner-intermediate riders only
+  if(r.exp==='beginner'||r.exp==='beg-inter'){
+    h+=`<div class="hq">
+      <span class="hq-tag">${SVG.star} The Beginner Hub</span><span class="hq-free">Free to join</span>
+      <h3>Your riding journey doesn't end at training</h3>
+      <p class="hq-sub">RidersHQ is the beginner hub built for riders who just got their license. Exclusive deals on gear, insurance, and rentals. Organize rides with fellow students. Connect with riders. All in one place.</p>
+      <div class="hq-grid">
+        <div class="hq-stat"><b>100K+</b><span>New riders annually</span></div>
+        <div class="hq-stat"><b>8</b><span>Product categories</span></div>
+        <div class="hq-stat"><b>$0</b><span>Cost to join</span></div>
+        <div class="hq-stat"><b>Trusted</b><span>Partners</span></div>
+      </div>
+      <ul class="hq-feat">
+        <li>Exclusive gear and insurance deals</li>
+        <li>Discounted motorcycle rentals</li>
+        <li>Organize rides with fellow students</li>
+        <li>Connect with riders near you</li>
+      </ul>
+      <div class="hq-cta">
+        <a class="hq-btn" href="https://www.riders-share.com/ridershq#join" target="_blank" rel="noopener" onclick="trackHQClick('join')">Join RidersHQ, it's free ${SVG.arrow}</a>
+        <a class="hq-btn2" href="https://www.riders-share.com/ridershq/forum" target="_blank" rel="noopener" onclick="trackHQClick('forum')">Visit community forum</a>
+      </div>
+      <p class="hq-join"><span class="hq-dot"></span><b>282 riders</b> joined this week</p>
+    </div>`;
+  }
   // Used banner
   if(r.usedPath){
     const isBeg=r.exp==='beginner'||r.exp==='beg-inter';
